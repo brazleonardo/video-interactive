@@ -1,4 +1,5 @@
 import { useMemo, useState, useCallback, useEffect } from 'react'
+import { format } from 'date-fns'
 
 import { useInteractiveVideo } from '@/contexts/interactiveVideo'
 
@@ -102,7 +103,7 @@ export default function useEnd() {
     setData((oldData) => {
       return {
         ...oldData,
-        date: '11 de março de 2024',
+        date: format(new Date(), 'dd/MM/yyyy'),
         quiz: getResultQuiz(),
         comment: getResultComment(),
         check: getResultCheck(),
