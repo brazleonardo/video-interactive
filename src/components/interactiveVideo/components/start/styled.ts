@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Box = styled.div`
   width: 100%;
-  max-width: 700px;
+  max-width: 990px;
 
   p {
     margin-bottom: 20px;
