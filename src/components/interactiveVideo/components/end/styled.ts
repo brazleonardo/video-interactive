@@ -23,10 +23,13 @@ export {
   GiPodium,
 }
 
-export const Container = styled.div`
+export const Container = styled.div<{ average: number }>`
   width: 100%;
   height: 100vh;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) =>
+    props.average >= 80
+      ? props.theme.colors.bgEndApproved
+      : props.theme.colors.bgEndNotApproved};
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -18,6 +18,8 @@ export const theme = {
     quizCheckedSuccess: '#AFDBD2',
     quizCheckedError: '#dbb6af',
     bgCard: '#fff',
+    bgEndApproved: '#AFDBD2',
+    bgEndNotApproved: '#dbb6af',
   },
   fonts: ['Roboto', 'sans-serif'],
   fontSizes: {

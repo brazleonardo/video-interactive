@@ -6,11 +6,28 @@ const End = () => {
   const { data, onStart } = useEnd()
 
   return (
-    <Component.Container>
+    <Component.Container average={data.scores}>
       <Component.Box>
-        <Component.Text>
-          Parabéns! Você entendeu bem sobre o conteúdo.
-        </Component.Text>
+        <Component.When is={data.scores >= 90}>
+          <Component.Text>
+            Parabéns! Você entendeu bem sobre o conteúdo.
+          </Component.Text>
+        </Component.When>
+        <Component.When is={data.scores >= 80 && data.scores < 90}>
+          <Component.Text>
+            Parabéns! Você atingiu a média necessária.
+          </Component.Text>
+        </Component.When>
+        <Component.When is={data.scores >= 50 && data.scores < 80}>
+          <Component.Text>
+            Ops! Você não atingiu a média necessária.
+          </Component.Text>
+        </Component.When>
+        <Component.When is={data.scores < 50}>
+          <Component.Text>
+            Ops! Parece que você não entendeu o conteúdo.
+          </Component.Text>
+        </Component.When>
       </Component.Box>
       <Component.Cards>
         <Component.Card>
