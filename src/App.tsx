@@ -1,8 +1,7 @@
-import Theme from "@/Theme"
-import Home from "@/pages/home"
+import Theme from '@/Theme'
+import Home from '@/pages/home'
 
 function App() {
-
   return (
     <Theme>
       <Home />

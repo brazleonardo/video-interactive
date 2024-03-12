@@ -1,12 +1,11 @@
-import * as Component from './styled';
+import * as Component from './styled'
 
 function Home() {
-    return (
-      <Component.Container>
-         <Component.InteractiveVideo />
-      </Component.Container>
-    );
+  return (
+    <Component.Container>
+      <Component.InteractiveVideo />
+    </Component.Container>
+  )
 }
-  
-export default Home;
-  
+
+export default Home

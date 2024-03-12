@@ -1,9 +1,11 @@
-import InteractiveVideoContext, { useInteractiveVideo } from '@/contexts/interactiveVideo';
+import InteractiveVideoContext, {
+  useInteractiveVideo,
+} from '@/contexts/interactiveVideo'
 
-import * as Component from './styled';
+import * as Component from './styled'
 
 function InteractiveVideo() {
-  const { status, onStart } = useInteractiveVideo();
+  const { status, onStart } = useInteractiveVideo()
 
   return (
     <Component.Container>
@@ -17,14 +19,13 @@ function InteractiveVideo() {
         <Component.End />
       </Component.When>
     </Component.Container>
-  );
+  )
 }
 
 const InteractiveVideoComponent = () => (
   <InteractiveVideoContext>
-     <InteractiveVideo />
+    <InteractiveVideo />
   </InteractiveVideoContext>
-);
-  
-export default InteractiveVideoComponent;
-  
+)
+
+export default InteractiveVideoComponent

@@ -1,31 +1,31 @@
-import { ReactNode } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ReactNode } from 'react'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const theme = {
   colors: {
-    primary: "#333333",
-    secondary: "#AFDBD2",
+    primary: '#333333',
+    secondary: '#AFDBD2',
     primaryBtn: '#111111',
-    viewedBtn: "#e0bf05",
-    successBtn: "#06b45d",
-    textPrimaryContrast: "#ffffff", 
-    textSecondaryContrast: "#111111",
-    barVideoSlider: "#ffffff",
-    sliderInteractive: "#db5b30", 
-    quizCheck: "#dedede",
-    quizChecked: "#b1b1b1",
-    quizCheckedSuccess: "#AFDBD2",
-    quizCheckedError: "#dbb6af",
-    bgCard: "#fff",
+    viewedBtn: '#e0bf05',
+    successBtn: '#06b45d',
+    textPrimaryContrast: '#ffffff',
+    textSecondaryContrast: '#111111',
+    barVideoSlider: '#ffffff',
+    sliderInteractive: '#db5b30',
+    quizCheck: '#dedede',
+    quizChecked: '#b1b1b1',
+    quizCheckedSuccess: '#AFDBD2',
+    quizCheckedError: '#dbb6af',
+    bgCard: '#fff',
   },
-  fonts: ["Roboto", "sans-serif"],
+  fonts: ['Roboto', 'sans-serif'],
   fontSizes: {
-    small: "1em",
-    medium: "2em",
-    large: "3em",
-  }
-};
+    small: '1em',
+    medium: '2em',
+    large: '3em',
+  },
+}
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -54,6 +54,6 @@ const AppThemeProvider = ({ children }: Props) => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   </>
-);
+)
 
-export default AppThemeProvider;
+export default AppThemeProvider
