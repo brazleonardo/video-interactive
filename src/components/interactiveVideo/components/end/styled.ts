@@ -87,6 +87,11 @@ export const CardText = styled.h3`
   color: ${(props) => props.theme.colors.textSecondaryContrast};
 `
 
+export const TextSmall = styled.span`
+  font-size: 0.9rem;
+  font-weight: normal;
+`
+
 export const WrapIcon = styled.h3`
   width: 40px;
   height: 40px;

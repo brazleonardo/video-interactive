@@ -25,7 +25,10 @@ const End = () => {
         <Component.Card>
           <Component.Info>
             <Component.CardTitle>Pontuação</Component.CardTitle>
-            <Component.CardText>{data.scores}%</Component.CardText>
+            <Component.CardText>
+              {data.scores}%{' '}
+              <Component.TextSmall>de acerto</Component.TextSmall>
+            </Component.CardText>
           </Component.Info>
           <Component.WrapIcon>
             <Component.GiPodium />

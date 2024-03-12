@@ -100,12 +100,36 @@ export default function useEnd() {
   }, [contentInteractive])
 
   const getScores = useCallback(() => {
-    const quiz = getResultQuiz()
-    const comment = getResultComment()
-    const check = getResultCheck()
-    const info = getResultInfo()
+    const quiz = getResultQuiz() // peso 1
+    const comment = getResultComment() // peso 1
+    const check = getResultCheck() // peso 1
+    const info = getResultInfo() // peso 1
+    const scores = []
+    let totalQuestions = 0
+    let totalScores = 0
+    let average = 0
 
-    return { quiz, comment, check, info }
+    if (quiz) {
+      scores.push(quiz.questionsAnswered)
+      totalQuestions += quiz.total
+    }
+    if (comment) {
+      scores.push(comment.questionsAnswered)
+      totalQuestions += comment.total
+    }
+    if (check) {
+      scores.push(check.questionsAnswered)
+      totalQuestions += check.total
+    }
+    if (info) {
+      scores.push(info.questionsAnswered)
+      totalQuestions += info.total
+    }
+
+    totalScores = scores.reduce((a, b) => a + b, 0)
+    average = Math.floor((totalScores / totalQuestions) * 100)
+
+    return average
   }, [getResultQuiz, getResultComment, getResultCheck, getResultInfo])
 
   useEffect(() => {
@@ -115,6 +139,7 @@ export default function useEnd() {
       return {
         ...oldData,
         date: format(new Date(), 'dd/MM/yyyy'),
+        scores: getScores(),
         quiz: getResultQuiz(),
         comment: getResultComment(),
         check: getResultCheck(),
