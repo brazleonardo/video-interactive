@@ -60,8 +60,8 @@ export const Cards = styled.div`
 `
 
 export const Card = styled.div`
-  width: 22%;
-  padding: 15px;
+  width: 20%;
+  padding: 25px;
   background-color: ${(props) => props.theme.colors.bgCard};
   border: 1px solid #333;
   border-radius: 4px;

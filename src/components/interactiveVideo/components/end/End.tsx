@@ -8,7 +8,9 @@ const End = () => {
   return (
     <Component.Container>
       <Component.Box>
-        <Component.Text>Parabéns! Você entendeu bem o assunto.</Component.Text>
+        <Component.Text>
+          Parabéns! Você entendeu bem sobre o conteúdo.
+        </Component.Text>
       </Component.Box>
       <Component.Cards>
         <Component.Card>

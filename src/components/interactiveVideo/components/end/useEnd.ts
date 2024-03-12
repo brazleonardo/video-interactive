@@ -99,7 +99,18 @@ export default function useEnd() {
     return result
   }, [contentInteractive])
 
+  const getScores = useCallback(() => {
+    const quiz = getResultQuiz()
+    const comment = getResultComment()
+    const check = getResultCheck()
+    const info = getResultInfo()
+
+    return { quiz, comment, check, info }
+  }, [getResultQuiz, getResultComment, getResultCheck, getResultInfo])
+
   useEffect(() => {
+    console.log(getScores())
+
     setData((oldData) => {
       return {
         ...oldData,
@@ -110,7 +121,13 @@ export default function useEnd() {
         info: getResultInfo(),
       }
     })
-  }, [getResultQuiz, getResultComment, getResultCheck, getResultInfo])
+  }, [
+    getScores,
+    getResultQuiz,
+    getResultComment,
+    getResultCheck,
+    getResultInfo,
+  ])
 
   return { data, onStart }
 }
