@@ -171,21 +171,14 @@ export function useInteractiveVideoProvider() {
       values: PropsContentInteractive | null,
       isSound?: boolean,
     ) => {
-      if (isSound) {
-        return data.map((item) => {
-          if (item.time === values!.time) {
-            item.status = 'answered'
-            item.finished = true
-            successResponseSound()
-          }
-          return item
-        })
-      }
-
       return data.map((item) => {
-        if (item.time === values?.time) {
+        if (item.time === values!.time) {
           item.status = 'answered'
           item.finished = true
+
+          if (isSound) {
+            successResponseSound()
+          }
         }
 
         return item
