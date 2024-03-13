@@ -83,7 +83,8 @@ const InteractiveContent = ({ data }: Props) => {
               type="button"
               onClick={() => onSubmit(data)}
               disabled={
-                data.status === 'answered' || !data.content.questionAnswer
+                data.status === 'answered' ||
+                data.content.questionAnswer === null
               }
             >
               Enviar
