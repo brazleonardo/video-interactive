@@ -10,7 +10,7 @@ import {
 import { GiPodium } from 'react-icons/gi'
 
 import When from '@/components/when'
-import Button from '@/components/button'
+import Button from '@/components/ui/button'
 
 export {
   When,

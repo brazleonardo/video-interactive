@@ -2,13 +2,10 @@ import styled from 'styled-components'
 import { FaPlay, FaPause } from 'react-icons/fa6'
 
 import When from '@/components/when'
-import Button from '@/components/button'
-import Marker from '../marker'
-import VolumeIcon from '../volumeIcon'
+import Button from '@/components/ui/button'
+import { Marker, VolumeIcon } from '@/components/interactiveVideo'
 
-import InteractiveContent from '../interactiveContent'
-
-export { When, Button, Marker, FaPlay, FaPause, VolumeIcon, InteractiveContent }
+export { When, Button, Marker, FaPlay, FaPause, VolumeIcon }
 
 export const Container = styled.div`
   width: calc(100vw - 80px);
@@ -19,7 +16,7 @@ export const Container = styled.div`
   margin: auto;
 `
 
-export const Wrap = styled.div<{ $hasInteractive: boolean }>`
+export const Wrap = styled.div`
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -31,12 +28,7 @@ export const Wrap = styled.div<{ $hasInteractive: boolean }>`
   padding-bottom: 10px;
 
   video {
-    width: ${(props) => (props.$hasInteractive ? '60%' : '100%')};
-  }
-
-  article {
-    width: ${(props) => (props.$hasInteractive ? '40%' : '0')};
-    visibility: ${(props) => (props.$hasInteractive ? 'visible' : 'hidden')};
+    width: 100%;
   }
 `
 

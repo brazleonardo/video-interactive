@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import When from '@/components/when'
 import Start from './components/start'
 import End from './components/end'
-import Video from './components/videos'
+import Video from './components/video'
 
 export { When, Start, End, Video }
 

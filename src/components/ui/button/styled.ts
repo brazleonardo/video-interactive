@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { darken } from '@/utils'
+import { sizeButton, darken } from '@/utils'
 
 import { PropsButton } from './interface'
 
@@ -36,14 +36,3 @@ export const Button = styled.button<PropsButton>`
     cursor: default;
   }
 `
-
-const sizeButton = (size: 'small' | 'medium' | 'large' | undefined) => {
-  if (size === 'large') {
-    return 60
-  }
-  if (size === 'medium') {
-    return 45
-  }
-
-  return 30
-}

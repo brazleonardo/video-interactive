@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FaPlay } from 'react-icons/fa6'
 
 import When from '@/components/when'
-import Button from '@/components/button'
+import Button from '@/components/ui/button'
 
 export { When, Button, FaPlay }
 

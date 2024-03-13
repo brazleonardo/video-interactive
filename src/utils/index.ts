@@ -1,14 +1,36 @@
-export const darken = (hexColor: string, magnitude: number) => {
+/**
+ * Função que retorna o tamanho do botão
+ * @method sizeButton
+ * @param {string} size recebe uma string com as seguintes opoções 'small' | 'medium' | 'large'
+ */
+export const sizeButton = (size: 'small' | 'medium' | 'large' | undefined) => {
+  if (size === 'large') {
+    return 60
+  }
+  if (size === 'medium') {
+    return 45
+  }
+
+  return 30
+}
+
+/**
+ * Função que retorna uma rariação da cor de acordo com value informado
+ * @method darken
+ * @param {string} hexColor recebe uma string de uma cor em hexadecimal
+ * @param {number} value recebe um valor númerico para variar a cor
+ */
+export const darken = (hexColor: string, value: number) => {
   hexColor = hexColor.replace(`#`, ``)
   if (hexColor.length === 6) {
     const decimalColor = parseInt(hexColor, 16)
-    let r = (decimalColor >> 16) + magnitude
+    let r = (decimalColor >> 16) + value
     r > 255 && (r = 255)
     r < 0 && (r = 0)
-    let g = (decimalColor & 0x0000ff) + magnitude
+    let g = (decimalColor & 0x0000ff) + value
     g > 255 && (g = 255)
     g < 0 && (g = 0)
-    let b = ((decimalColor >> 8) & 0x00ff) + magnitude
+    let b = ((decimalColor >> 8) & 0x00ff) + value
     b > 255 && (b = 255)
     b < 0 && (b = 0)
     return `#${(g | (b << 8) | (r << 16)).toString(16)}`

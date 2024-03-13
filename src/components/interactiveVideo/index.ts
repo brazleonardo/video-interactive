@@ -1,1 +1,8 @@
 export { default } from './Interactivevideo'
+export { default as Attachment } from './components/attachment'
+export { default as Video } from './components/video'
+export { default as InteractiveContent } from './components/interactiveContent'
+export { default as Marker } from './components/marker'
+export { default as VolumeIcon } from './components/volumeIcon'
+export { default as Start } from './components/start'
+export { default as End } from './components/end'
