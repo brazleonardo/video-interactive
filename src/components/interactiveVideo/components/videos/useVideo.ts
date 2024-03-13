@@ -217,8 +217,6 @@ export default function useVideo() {
       videoRef.current!.volume = volume
       videoRef.current!.muted = true
 
-      console.log(progressValue)
-
       if (volume === 0) {
         videoRef.current!.muted = true
         setPlayer((oldPlayer) => ({
