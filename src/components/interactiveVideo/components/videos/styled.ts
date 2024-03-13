@@ -1,23 +1,14 @@
 import styled from 'styled-components'
-import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa'
 import { FaPlay, FaPause } from 'react-icons/fa6'
 
 import When from '@/components/when'
 import Button from '@/components/button'
 import Marker from '../marker'
+import VolumeIcon from '../volumeIcon'
 
 import InteractiveContent from '../interactiveContent'
 
-export {
-  When,
-  Button,
-  Marker,
-  FaPlay,
-  FaPause,
-  FaVolumeUp,
-  FaVolumeMute,
-  InteractiveContent,
-}
+export { When, Button, Marker, FaPlay, FaPause, VolumeIcon, InteractiveContent }
 
 export const Container = styled.div`
   width: calc(100vw - 80px);
@@ -176,8 +167,8 @@ export const WrapVolume = styled.div`
   position: relative;
 
   input[type='range'] {
-    width: 50px;
-    background-color: ${(props) => props.theme.colors.secondary};
+    width: 45px;
+    background: ${(props) => props.theme.colors.secondary};
     border-radius: 4px;
     position: absolute;
     top: 50%;
@@ -188,6 +179,10 @@ export const WrapVolume = styled.div`
   }
 
   &:hover {
+    button {
+      opacity: 0.4;
+    }
+
     input[type='range'] {
       opacity: 1;
     }

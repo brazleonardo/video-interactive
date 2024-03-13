@@ -8,6 +8,7 @@ function Video() {
   const {
     videoRef,
     sliderRef,
+    sliderVolumeRef,
     player,
     contentInteractive,
     onLoadedMetadata,
@@ -74,9 +75,10 @@ function Video() {
           </Component.WrapSlider>
           <Component.WrapVolume>
             <Component.ButtonIcon>
-              <Component.FaVolumeUp />
+              <Component.VolumeIcon value={player.volume} />
             </Component.ButtonIcon>
             <Component.Slider
+              ref={sliderVolumeRef}
               min={0}
               max={1}
               value={player.volume}

@@ -36,12 +36,14 @@ export default function useVideo() {
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const sliderRef = useRef<HTMLInputElement>(null)
+  const sliderVolumeRef = useRef<HTMLInputElement>(null)
 
   const [player, setPlayer] = useState<PropsPlayer>(initialPlayer)
 
   const onLoadedMetadata = useCallback(
     (event: SyntheticEvent<HTMLVideoElement>) => {
       const duration = event.currentTarget.duration
+      const progressVolume = (event.currentTarget.volume / 1) * 100
 
       if (convertTimeToSeconds(time)) {
         videoRef.current!.currentTime = convertTimeToSeconds(time)
@@ -63,6 +65,8 @@ export default function useVideo() {
           },
         }
       })
+
+      sliderVolumeRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressVolume}%, ${theme.colors.secondary} ${progressVolume}%)`
     },
     [time],
   )
@@ -208,9 +212,12 @@ export default function useVideo() {
     (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
       const volume = parseFloat(Number(event.target.value).toString())
+      const progressValue = (volume / 1) * 100
 
       videoRef.current!.volume = volume
       videoRef.current!.muted = true
+
+      console.log(progressValue)
 
       if (volume === 0) {
         videoRef.current!.muted = true
@@ -234,6 +241,8 @@ export default function useVideo() {
           isMuted: false,
         },
       }))
+
+      sliderVolumeRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressValue}%, ${theme.colors.secondary} ${progressValue}%)`
     },
     [],
   )
@@ -241,6 +250,7 @@ export default function useVideo() {
   return {
     videoRef,
     sliderRef,
+    sliderVolumeRef,
     player,
     contentInteractive,
     onLoadedMetadata,
