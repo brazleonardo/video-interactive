@@ -15,7 +15,7 @@ import { useRegisterVideo } from '@/contexts/registerVideo'
 import { PropsPlayer } from '@/types/iteractiveVideo'
 
 export default function useAttachment() {
-  const { contentInteractive } = useRegisterVideo()
+  const { contentInteractive, onStatuPaused } = useRegisterVideo()
 
   const initialPlayer = useMemo(
     () => ({
@@ -31,8 +31,6 @@ export default function useAttachment() {
     [],
   )
 
-  const time = '00:00'
-
   const videoRef = useRef<HTMLVideoElement>(null)
   const sliderRef = useRef<HTMLInputElement>(null)
   const sliderVolumeRef = useRef<HTMLInputElement>(null)
@@ -42,10 +40,14 @@ export default function useAttachment() {
   const onLoadedMetadata = useCallback(
     (event: SyntheticEvent<HTMLVideoElement>) => {
       const duration = event.currentTarget.duration
+      const timeCurrent = Math.floor(videoRef.current!.currentTime)
+      const progressValue = (timeCurrent / duration) * 100
       const progressVolume = (event.currentTarget.volume / 1) * 100
 
-      if (convertTimeToSeconds(time)) {
-        videoRef.current!.currentTime = convertTimeToSeconds(time)
+      if (convertTimeToSeconds(String(timeCurrent))) {
+        videoRef.current!.currentTime = convertTimeToSeconds(
+          String(timeCurrent),
+        )
       }
       setPlayer((oldPlayer) => {
         if (videoRef.current) {
@@ -58,16 +60,17 @@ export default function useAttachment() {
           ...{
             duration: formatTime(Math.round(duration), 'auto'),
             visualizedTime: 0,
-            currentTime: time,
+            currentTime: formatTime(timeCurrent, 'auto'),
             isMuted: false,
             volume: 1,
           },
         }
       })
 
+      sliderRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressValue}%, ${theme.colors.secondary} ${progressValue}%)`
       sliderVolumeRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressVolume}%, ${theme.colors.secondary} ${progressVolume}%)`
     },
-    [time],
+    [],
   )
 
   const onTimeUpdate = useCallback(() => {
@@ -87,8 +90,13 @@ export default function useAttachment() {
       },
     }))
 
+    onStatuPaused({
+      time: timeCurrent,
+      timeFormated: formatTime(timeCurrent, 'auto'),
+    })
+
     sliderRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressValue}%, ${theme.colors.secondary} ${progressValue}%)`
-  }, [])
+  }, [onStatuPaused])
 
   const onVolumeChange = useCallback((event: ChangeEvent<HTMLVideoElement>) => {
     setPlayer((oldPlayer) => ({
@@ -107,8 +115,16 @@ export default function useAttachment() {
   }, [])
 
   const onPause = useCallback(async () => {
+    const videoElem = videoRef.current
+    const timeCurrent = Math.floor(videoElem!.currentTime)
+
+    onStatuPaused({
+      time: timeCurrent,
+      timeFormated: formatTime(timeCurrent, 'auto'),
+    })
+
     setPlayer((oldPlayer) => ({ ...oldPlayer, isPlaying: false }))
-  }, [])
+  }, [onStatuPaused])
 
   const onMarkerBar = useCallback((pos: number) => {
     if (!videoRef.current) {
@@ -142,10 +158,6 @@ export default function useAttachment() {
     (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault()
       const manualChange = Number(event.target.value)
-
-      if (videoRef.current?.paused) {
-        return
-      }
 
       videoRef.current!.currentTime =
         (videoRef.current!.duration / 100) * manualChange

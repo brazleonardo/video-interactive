@@ -39,3 +39,23 @@ export const Form = styled.form`
   gap: 1.5rem;
   margin-top: 40px;
 `
+
+export const GroupButton = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+`
+
+export const ButtonAdd = styled(Button)`
+  && {
+    background-color: #fff;
+    color: ${(props) => props.theme.colors.primary};
+    border: 1px solid ${(props) => props.theme.colors.primary};
+
+    &:hover {
+      background-color: #d1d1d1;
+    }
+  }
+`

@@ -24,6 +24,8 @@ const VideoUpload = ({ src }: Props) => {
     handleChangeVolume,
   } = useAttachment()
 
+  console.log(contentInteractive)
+
   return (
     <Component.Container>
       <Component.Wrap>
@@ -50,15 +52,13 @@ const VideoUpload = ({ src }: Props) => {
             {player.currentTime} / {player.duration}
           </Component.Time>
           <Component.WrapSlider ref={sliderRef}>
-            <Component.When is={!videoRef.current?.paused}>
-              <Component.Slider
-                min="0"
-                max="100"
-                value={player.progress}
-                onChange={handleChangeProgress}
-              />
-            </Component.When>
-            {contentInteractive.data?.map((item) => (
+            <Component.Slider
+              min="0"
+              max="100"
+              value={player.progress}
+              onChange={handleChangeProgress}
+            />
+            {contentInteractive?.map((item) => (
               <Component.MarkerSlider
                 key={item.time}
                 left={onMarkerBar(item.time)}

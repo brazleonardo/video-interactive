@@ -1,9 +1,11 @@
 import { useState, useCallback, ChangeEvent } from 'react'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
+import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
 
 export default function useRegister() {
-  const { contentInteractive } = useRegisterVideo()
+  const { contentInteractive, statuPaused, setContentInteractive } =
+    useRegisterVideo()
 
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
@@ -19,5 +21,23 @@ export default function useRegister() {
     [],
   )
 
-  return { file, urlVideo, contentInteractive, handleChange }
+  const handleAddContentInteractive = () => {
+    setContentInteractive((oldContentInteractive) => {
+      const newContentInteractive: PropsVideoInteractiveRegister = {
+        time: statuPaused!.time as number,
+        timeFormated: statuPaused!.timeFormated!,
+        type: 'info',
+      }
+      return [...oldContentInteractive, newContentInteractive]
+    })
+  }
+
+  return {
+    file,
+    urlVideo,
+    contentInteractive,
+    statuPaused,
+    handleChange,
+    handleAddContentInteractive,
+  }
 }

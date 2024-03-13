@@ -99,7 +99,6 @@ export const Slider = styled.input.attrs({ type: 'range' })`
     border-radius: 50%;
     transition: 0.2s ease-in-out;
     border: none;
-    opacity: 0;
   }
 
   &::-moz-range-thumb {
@@ -109,7 +108,6 @@ export const Slider = styled.input.attrs({ type: 'range' })`
     border-radius: 50%;
     transition: all 0.2s ease-in-out;
     border: none;
-    opacity: 0;
   }
 
   &:hover::-webkit-slider-thumb {
@@ -145,7 +143,7 @@ export const Time = styled.span`
 `
 
 export const MarkerSlider = styled.div<{ left: string }>`
-  width: 2.7%;
+  width: 8px;
   height: 8px;
   background-color: #db5b30;
   position: absolute;

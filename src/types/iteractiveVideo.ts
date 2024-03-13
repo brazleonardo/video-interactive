@@ -50,9 +50,6 @@ export interface PropDataEnd {
 
 export interface PropsVideoInteractiveRegister {
   time: number
+  timeFormated: string
   type: TypeIteractiveContent
-}
-
-export interface PropsVideoInteractiveRegisterData {
-  data: PropsVideoInteractiveRegister[]
 }

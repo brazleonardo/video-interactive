@@ -5,7 +5,13 @@ import RegisterVideoContext from '@/contexts/registerVideo'
 import useRegister from './useRegister'
 
 function Register() {
-  const { urlVideo, file, handleChange } = useRegister()
+  const {
+    urlVideo,
+    file,
+    statuPaused,
+    handleChange,
+    handleAddContentInteractive,
+  } = useRegister()
   return (
     <Component.Container>
       <Component.Title>Cadastro de vídeo</Component.Title>
@@ -19,7 +25,17 @@ function Register() {
         />
 
         <Component.When is={!!file}>
-          <Component.Button type="submit">Salvar</Component.Button>
+          <Component.GroupButton>
+            <Component.When is={!!statuPaused && statuPaused.time! > 10}>
+              <Component.ButtonAdd
+                type="button"
+                onClick={handleAddContentInteractive}
+              >
+                Adicionar conteúdo no tempo {statuPaused?.timeFormated}
+              </Component.ButtonAdd>
+            </Component.When>
+            <Component.Button type="submit">Salvar</Component.Button>
+          </Component.GroupButton>
         </Component.When>
       </Component.Form>
     </Component.Container>
