@@ -132,25 +132,17 @@ export default function useVideo() {
     sliderRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressValue}%, ${theme.colors.secondary} ${progressValue}%)`
   }, [updateStateContentInteractive])
 
-  const onChangeProgress = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      event.preventDefault()
-      const manualChange = Number(event.target.value)
-
-      if (videoRef.current?.paused) {
-        return
-      }
-
-      videoRef.current!.currentTime =
-        (videoRef.current!.duration / 100) * manualChange
-
-      setPlayer((oldPlayer) => ({
-        ...oldPlayer,
-        progress: manualChange,
-      }))
-    },
-    [],
-  )
+  const onVolumeChange = useCallback((event: ChangeEvent<HTMLVideoElement>) => {
+    setPlayer((oldPlayer) => ({
+      ...oldPlayer,
+      ...{
+        volume: event.target.muted ? 0 : event.target.volume,
+        isMuted:
+          event.target.muted ||
+          (!event.target.muted && event.target.volume === 0),
+      },
+    }))
+  }, [])
 
   const onPlay = useCallback(() => {
     setPlayer((oldPlayer) => ({ ...oldPlayer, isPlaying: true }))
@@ -192,6 +184,60 @@ export default function useVideo() {
     })
   }, [])
 
+  const handleChangeProgress = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault()
+      const manualChange = Number(event.target.value)
+
+      if (videoRef.current?.paused) {
+        return
+      }
+
+      videoRef.current!.currentTime =
+        (videoRef.current!.duration / 100) * manualChange
+
+      setPlayer((oldPlayer) => ({
+        ...oldPlayer,
+        progress: manualChange,
+      }))
+    },
+    [],
+  )
+
+  const handleChangeVolume = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault()
+      const volume = parseFloat(Number(event.target.value).toString())
+
+      videoRef.current!.volume = volume
+      videoRef.current!.muted = true
+
+      if (volume === 0) {
+        videoRef.current!.muted = true
+        setPlayer((oldPlayer) => ({
+          ...oldPlayer,
+          ...{
+            volume,
+            isMuted: volume <= 0,
+          },
+        }))
+
+        return
+      }
+
+      videoRef.current!.muted = false
+
+      setPlayer((oldPlayer) => ({
+        ...oldPlayer,
+        ...{
+          volume,
+          isMuted: false,
+        },
+      }))
+    },
+    [],
+  )
+
   return {
     videoRef,
     sliderRef,
@@ -199,11 +245,13 @@ export default function useVideo() {
     contentInteractive,
     onLoadedMetadata,
     onTimeUpdate,
-    onChangeProgress,
+    onVolumeChange,
     onPlay,
     onPause,
     onEnded,
     onMarkerBar,
     handleTogglePlay,
+    handleChangeProgress,
+    handleChangeVolume,
   }
 }

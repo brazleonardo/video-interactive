@@ -171,3 +171,25 @@ export const MarkerSlider = styled.div<{ left: string }>`
   left: ${(props) => props.left}%;
   z-index: 2;
 `
+
+export const WrapVolume = styled.div`
+  position: relative;
+
+  input[type='range'] {
+    width: 50px;
+    background-color: ${(props) => props.theme.colors.secondary};
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover {
+    input[type='range'] {
+      opacity: 1;
+    }
+  }
+`

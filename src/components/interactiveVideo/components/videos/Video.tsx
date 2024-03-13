@@ -12,12 +12,14 @@ function Video() {
     contentInteractive,
     onLoadedMetadata,
     onTimeUpdate,
-    onChangeProgress,
+    onVolumeChange,
     onPlay,
     onPause,
     onEnded,
     onMarkerBar,
     handleTogglePlay,
+    handleChangeProgress,
+    handleChangeVolume,
   } = useVideo()
 
   return (
@@ -35,6 +37,7 @@ function Video() {
           onPlay={onPlay}
           onPause={onPause}
           onTimeUpdate={onTimeUpdate}
+          onVolumeChange={onVolumeChange}
           onEnded={onEnded}
           src={src}
         />
@@ -57,7 +60,7 @@ function Video() {
                 min="0"
                 max="100"
                 value={player.progress}
-                onChange={onChangeProgress}
+                onChange={handleChangeProgress}
               />
             </Component.When>
             {contentInteractive.data?.map((item) => (
@@ -69,9 +72,18 @@ function Video() {
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>
-          <Component.ButtonIcon>
-            <Component.FaVolumeUp />
-          </Component.ButtonIcon>
+          <Component.WrapVolume>
+            <Component.ButtonIcon>
+              <Component.FaVolumeUp />
+            </Component.ButtonIcon>
+            <Component.Slider
+              min={0}
+              max={1}
+              value={player.volume}
+              step={0.25}
+              onChange={handleChangeVolume}
+            />
+          </Component.WrapVolume>
         </Component.Controls>
       </Component.Wrap>
     </Component.Container>
