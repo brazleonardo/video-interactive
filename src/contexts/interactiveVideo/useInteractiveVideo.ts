@@ -165,6 +165,35 @@ export function useInteractiveVideoProvider() {
     [errorResponseSound, successResponseSound],
   )
 
+  const updateStateDataContentInteractive = useCallback(
+    (
+      data: PropsContentInteractive[],
+      values: PropsContentInteractive | null,
+      isSound?: boolean,
+    ) => {
+      if (isSound) {
+        return data.map((item) => {
+          if (item.time === values!.time) {
+            item.status = 'answered'
+            item.finished = true
+            successResponseSound()
+          }
+          return item
+        })
+      }
+
+      return data.map((item) => {
+        if (item.time === values?.time) {
+          item.status = 'answered'
+          item.finished = true
+        }
+
+        return item
+      })
+    },
+    [successResponseSound],
+  )
+
   const onSubmitComment = useCallback(
     (values: PropsContentInteractive | null) => {
       setIsLoadingForm(true)
@@ -177,21 +206,18 @@ export function useInteractiveVideoProvider() {
           ...{
             current: oldContentInteractive.current,
             closeContentInteractive: false,
-            data: oldContentInteractive.data.map((item) => {
-              if (item.time === values!.time) {
-                item.status = 'answered'
-                item.finished = true
-                successResponseSound()
-              }
-              return item
-            }),
+            data: updateStateDataContentInteractive(
+              oldContentInteractive.data,
+              values,
+              true,
+            ),
           },
         }))
 
         setIsLoadingForm(false)
       }, 1000)
     },
-    [successResponseSound],
+    [updateStateDataContentInteractive],
   )
 
   const onContinue = useCallback(
@@ -208,21 +234,17 @@ export function useInteractiveVideoProvider() {
           ...{
             current: null,
             closeContentInteractive: true,
-            data: oldContentInteractive.data.map((item) => {
-              if (item.time === values?.time) {
-                item.status = 'answered'
-                item.finished = true
-              }
-
-              return item
-            }),
+            data: updateStateDataContentInteractive(
+              oldContentInteractive.data,
+              values,
+            ),
           },
         }))
 
         setIsLoadingForm(false)
       }, 1000)
     },
-    [clickSound],
+    [clickSound, updateStateDataContentInteractive],
   )
 
   useEffect(() => {
