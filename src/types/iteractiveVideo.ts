@@ -47,3 +47,12 @@ export interface PropDataEnd {
   check: PropsTotalScores | null
   info: PropsTotalScores | null
 }
+
+export interface PropsVideoInteractiveRegister {
+  time: number
+  type: TypeIteractiveContent
+}
+
+export interface PropsVideoInteractiveRegisterData {
+  data: PropsVideoInteractiveRegister[]
+}

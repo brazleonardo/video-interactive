@@ -9,12 +9,14 @@ interface Props {
 }
 
 const ButtonUpload = ({ label, url, onChange }: Props) => (
-  <Component.Container $hasFile={!!url}>
-    <Component.Button size={'large'}>
-      <Component.MdOutlineCloudUpload size={30} />
-      {label}
-      <Component.InputFile onChange={onChange} alt="" title="" />
-    </Component.Button>
+  <Component.Container>
+    <Component.Inner $hasFile={!!url}>
+      <Component.Button type="button" size={'large'}>
+        <Component.MdOutlineCloudUpload size={30} />
+        {label}
+        <Component.InputFile onChange={onChange} alt="" title="" />
+      </Component.Button>
+    </Component.Inner>
     <Component.When is={!!url}>
       <Component.Attachment src={url} />
     </Component.When>

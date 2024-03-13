@@ -1,13 +1,19 @@
 import styled from 'styled-components'
 
+import When from '@/components/when'
 import ButtonUpload from '@/components/ui/buttonUpload'
+import Button from '@/components/ui/button'
 
-export { ButtonUpload }
+export { When, ButtonUpload, Button }
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1300px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: auto;
 `
 

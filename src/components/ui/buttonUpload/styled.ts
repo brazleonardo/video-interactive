@@ -7,7 +7,15 @@ import Button from '../button'
 
 export { When, Attachment, Button, MdOutlineCloudUpload }
 
-export const Container = styled.div<{ $hasFile: boolean }>`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+`
+
+export const Inner = styled.div<{ $hasFile: boolean }>`
   button {
     position: relative;
     overflow: hidden;

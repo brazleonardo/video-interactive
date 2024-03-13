@@ -10,12 +10,12 @@ import {
 import { theme } from '@/Theme'
 import { convertTimeToSeconds, formatTime } from '@/utils'
 
-import { useInteractiveVideo } from '@/contexts/interactiveVideo'
+import { useRegisterVideo } from '@/contexts/registerVideo'
 
 import { PropsPlayer } from '@/types/iteractiveVideo'
 
 export default function useAttachment() {
-  const { contentInteractive } = useInteractiveVideo()
+  const { contentInteractive } = useRegisterVideo()
 
   const initialPlayer = useMemo(
     () => ({

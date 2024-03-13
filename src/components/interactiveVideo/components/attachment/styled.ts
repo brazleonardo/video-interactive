@@ -8,8 +8,8 @@ import { Marker, VolumeIcon } from '@/components/interactiveVideo'
 export { When, Button, Marker, FaPlay, FaPause, VolumeIcon }
 
 export const Container = styled.div`
-  width: calc(100vw - 80px);
-  height: 100vh;
+  width: 100%;
+  max-width: 767px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ export const Wrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 60px;
 
   video {
     width: 100%;
@@ -33,7 +33,6 @@ export const Wrap = styled.div`
 `
 
 export const Video = styled.video`
-  height: 70vh;
   border: 1px solid #000;
   transition: all 0.3s ease-in-out;
 `

@@ -1,6 +1,10 @@
 import { useState, useCallback, ChangeEvent } from 'react'
 
+import { useRegisterVideo } from '@/contexts/registerVideo'
+
 export default function useRegister() {
+  const { contentInteractive } = useRegisterVideo()
+
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
 
@@ -15,5 +19,5 @@ export default function useRegister() {
     [],
   )
 
-  return { file, urlVideo, handleChange }
+  return { file, urlVideo, contentInteractive, handleChange }
 }
