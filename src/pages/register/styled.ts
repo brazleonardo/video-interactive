@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import When from '@/components/when'
 import ButtonUpload from '@/components/ui/buttonUpload'
 import Button from '@/components/ui/button'
+import { ModalContentInteractive } from '@/components/interactiveVideo'
 
-export { When, ButtonUpload, Button }
+export { When, ButtonUpload, Button, ModalContentInteractive }
 
 export const Container = styled.div`
   width: 100%;

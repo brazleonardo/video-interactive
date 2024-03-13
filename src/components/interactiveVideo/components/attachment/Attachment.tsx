@@ -24,8 +24,6 @@ const VideoUpload = ({ src }: Props) => {
     handleChangeVolume,
   } = useAttachment()
 
-  console.log(contentInteractive)
-
   return (
     <Component.Container>
       <Component.Wrap>

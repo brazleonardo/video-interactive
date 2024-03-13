@@ -45,6 +45,14 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+
+  input, textarea {
+    outline: none;
+
+    &:focus {
+      box-shadow: inset 0 0 10px rgba(30, 30, 30, 0.7);
+    }
+  }
 `
 
 type Props = {
