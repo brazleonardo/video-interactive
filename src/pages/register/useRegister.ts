@@ -51,9 +51,10 @@ export default function useRegister() {
   }
 
   const checkIfThisTimeExists = (time: number) => {
-    return !contentInteractive.find(
-      (item) => item.time === time && item.time <= time + 15,
-    )
+    return !contentInteractive.filter(
+      (item) =>
+        item.time === time || (item.time < time + 60 && item.time > time - 60),
+    ).length
   }
 
   return {
