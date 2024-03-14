@@ -22,6 +22,7 @@ const VideoUpload = ({ src }: Props) => {
     handleTogglePlay,
     handleChangeProgress,
     handleChangeVolume,
+    handleOpenModalContent,
   } = useAttachment()
 
   return (
@@ -64,7 +65,7 @@ const VideoUpload = ({ src }: Props) => {
                 <Component.Marker
                   type={item.type}
                   status={'viewed'}
-                  time={item.time}
+                  onClick={() => handleOpenModalContent(item.time)}
                 />
               </Component.MarkerSlider>
             ))}

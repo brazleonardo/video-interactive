@@ -15,7 +15,7 @@ import { useRegisterVideo } from '@/contexts/registerVideo'
 import { PropsPlayer } from '@/types/iteractiveVideo'
 
 export default function useAttachment() {
-  const { contentInteractive, onStatuPaused } = useRegisterVideo()
+  const { contentInteractive, onStatuPaused, setModal } = useRegisterVideo()
 
   const initialPlayer = useMemo(
     () => ({
@@ -207,6 +207,28 @@ export default function useAttachment() {
     [],
   )
 
+  const handleOpenModalContent = useCallback(
+    (time: number) => {
+      const values = contentInteractive.find((item) => item.time === time)
+      console.log(values)
+
+      setModal((oldModal) => ({
+        ...oldModal,
+        open: true,
+        data: {
+          ...oldModal.data,
+          type: values!.type,
+          fields: {
+            question: values?.content.question ?? '',
+            answers: values?.content.answers ?? [],
+            correctAnswer: values?.content.correctAnswer ?? null,
+          },
+        },
+      }))
+    },
+    [contentInteractive, setModal],
+  )
+
   return {
     videoRef,
     sliderRef,
@@ -222,5 +244,6 @@ export default function useAttachment() {
     handleTogglePlay,
     handleChangeProgress,
     handleChangeVolume,
+    handleOpenModalContent,
   }
 }

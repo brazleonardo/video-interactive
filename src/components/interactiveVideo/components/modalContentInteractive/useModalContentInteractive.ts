@@ -1,40 +1,25 @@
-import { useMemo, useState, ChangeEvent } from 'react'
+import { ChangeEvent } from 'react'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
 
 import { TypeIteractiveContent } from '@/types/iteractiveVideo'
 
-interface PropsFields {
-  question: string
-  answers?: string[]
-  correctAnswer?: number | null
-}
-
 export default function useModalContentInteractive() {
-  const { modal, onCloseModal, onOpenModal, setContentInteractive } =
+  const { modal, onCloseModal, setModal, setContentInteractive } =
     useRegisterVideo()
-
-  const initialFields = useMemo(
-    () => ({
-      question: '',
-    }),
-    [],
-  )
-
-  const [fields, setFields] = useState<PropsFields>(initialFields)
 
   const onCancel = () => {
     onCloseModal()
   }
 
   const onChangeType = (type: TypeIteractiveContent) => {
-    onOpenModal({
-      open: true,
+    setModal((oldModal) => ({
+      ...oldModal,
       data: {
+        ...oldModal.data,
         type,
-        statuPaused: modal.data!.statuPaused,
       },
-    })
+    }))
   }
 
   const onChange = ({
@@ -42,24 +27,25 @@ export default function useModalContentInteractive() {
   }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = target
 
-    setFields((oldFields) => {
-      if (name === 'question') {
-        oldFields.question = value
-      }
-
-      return oldFields
-    })
+    setModal((oldModal) => ({
+      ...oldModal,
+      data: {
+        ...oldModal.data,
+        fields: {
+          ...oldModal.data.fields,
+          [name]: value,
+        },
+      },
+    }))
   }
 
   const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log(modal.data!.type)
-
     setContentInteractive((oldContentInteractive) => {
       oldContentInteractive.map((item) => {
-        if (item.time === modal.data?.statuPaused?.time) {
-          item.content.question = fields.question
+        if (item.time === modal.data.statuPaused?.time) {
+          item.content.question = modal.data.fields.question
           item.type = modal.data.type
         }
 
@@ -74,5 +60,5 @@ export default function useModalContentInteractive() {
     onCloseModal()
   }
 
-  return { fields, onCancel, onChangeType, onChange, onSubmit }
+  return { modal, onCancel, onChangeType, onChange, onSubmit }
 }

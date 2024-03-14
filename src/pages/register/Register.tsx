@@ -11,7 +11,6 @@ function Register() {
     isLoadingForm,
     message,
     statuPaused,
-    modal,
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,
@@ -61,7 +60,7 @@ function Register() {
           </Component.InnerForm>
         </Component.Form>
       </Component.Container>
-      <Component.ModalContentInteractive open={modal.open} data={modal.data} />
+      <Component.ModalContentInteractive />
     </>
   )
 }

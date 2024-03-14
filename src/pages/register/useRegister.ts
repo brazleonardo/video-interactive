@@ -5,13 +5,8 @@ import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
 import { PropsMessage } from '@/types/message'
 
 export default function useRegister() {
-  const {
-    contentInteractive,
-    statuPaused,
-    modal,
-    setContentInteractive,
-    onOpenModal,
-  } = useRegisterVideo()
+  const { contentInteractive, statuPaused, setContentInteractive, setModal } =
+    useRegisterVideo()
 
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
@@ -48,11 +43,16 @@ export default function useRegister() {
       return [...oldContentInteractive, newContentInteractive]
     })
 
-    onOpenModal({
+    setModal({
       open: true,
       data: {
         type: 'info',
         statuPaused,
+        fields: {
+          question: '',
+          answers: [],
+          correctAnswer: null,
+        },
       },
     })
   }
@@ -92,7 +92,6 @@ export default function useRegister() {
     message,
     contentInteractive,
     statuPaused,
-    modal,
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,

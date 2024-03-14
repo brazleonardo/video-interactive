@@ -64,10 +64,17 @@ export interface PropsVideoInteractiveRegister {
   }
 }
 
+export interface PropsModalContentInteractiveFields {
+  question: string
+  answers?: string[]
+  correctAnswer?: number | null
+}
+
 export interface PropsModalContentInteractive {
   open: boolean
-  data?: {
+  data: {
     type: TypeIteractiveContent
     statuPaused: StatusPaused | null
+    fields: PropsModalContentInteractiveFields
   }
 }

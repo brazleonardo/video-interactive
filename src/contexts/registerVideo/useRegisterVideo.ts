@@ -20,8 +20,8 @@ interface Props {
   contentInteractive: PropsVideoInteractiveRegister[]
   modal: PropsModalContentInteractive
   onStatuPaused(value: StatusPaused | null): void
-  onOpenModal(value: PropsModalContentInteractive): void
   onCloseModal(): void
+  setModal: Dispatch<SetStateAction<PropsModalContentInteractive>>
   setContentInteractive: Dispatch<
     SetStateAction<PropsVideoInteractiveRegister[]>
   >
@@ -35,21 +35,31 @@ export function useRegisterVideo() {
 }
 
 export function useRegisterVideoProvider() {
+  const initialModal = useMemo(
+    () => ({
+      open: false,
+      data: {
+        type: 'info',
+        statuPaused: null,
+        fields: {
+          question: '',
+          answers: [],
+          correctAnswer: null,
+        },
+      },
+    }),
+    [],
+  ) as PropsModalContentInteractive
+
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [statuPaused, setStatuPaused] = useState<StatusPaused | null>(null)
-  const [modal, setModal] = useState<PropsModalContentInteractive>({
-    open: false,
-  })
+  const [modal, setModal] = useState<PropsModalContentInteractive>(initialModal)
   const [contentInteractive, setContentInteractive] = useState<
     PropsVideoInteractiveRegister[]
   >([])
 
   const onStatuPaused = (value: StatusPaused | null) => {
     setStatuPaused(value)
-  }
-
-  const onOpenModal = (value: PropsModalContentInteractive) => {
-    setModal(value)
   }
 
   const onCloseModal = () => {
@@ -70,8 +80,8 @@ export function useRegisterVideoProvider() {
       statuPaused,
       modal,
       onStatuPaused,
-      onOpenModal,
       onCloseModal,
+      setModal,
       setContentInteractive,
     }),
     [isLoadingPage, contentInteractive, statuPaused, modal],

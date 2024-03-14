@@ -2,14 +2,18 @@ import { ChangeEvent } from 'react'
 
 import * as Component from './styled'
 
-import { TypeIteractiveContent } from '@/types/iteractiveVideo'
+import {
+  TypeIteractiveContent,
+  PropsModalContentInteractiveFields,
+} from '@/types/iteractiveVideo'
 
 interface Props {
   type: TypeIteractiveContent
+  fields: PropsModalContentInteractiveFields
   onChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void
 }
 
-const FormContentType = ({ type, onChange }: Props) => {
+const FormContentType = ({ type, fields, onChange }: Props) => {
   if (type === 'quiz') {
     return (
       <Component.Container>
@@ -17,6 +21,7 @@ const FormContentType = ({ type, onChange }: Props) => {
         <Component.TextArea
           name="question"
           placeholder="Digite sua pergunta"
+          value={fields.question}
           onChange={onChange}
         ></Component.TextArea>
       </Component.Container>
@@ -29,6 +34,7 @@ const FormContentType = ({ type, onChange }: Props) => {
       <Component.TextArea
         name="question"
         placeholder="Digite sua Informação"
+        value={fields.question}
         onChange={onChange}
       ></Component.TextArea>
     </Component.Container>
