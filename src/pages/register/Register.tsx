@@ -12,7 +12,7 @@ function Register() {
     modal,
     handleChange,
     handleAddContentInteractive,
-    checkIfThisTimeExists,
+    canIAddThisTime,
   } = useRegister()
   return (
     <>
@@ -33,7 +33,7 @@ function Register() {
                 is={
                   !!statuPaused &&
                   statuPaused.time! > 10 &&
-                  checkIfThisTimeExists(statuPaused.time!)
+                  canIAddThisTime(statuPaused.time!)
                 }
               >
                 <Component.ButtonAdd

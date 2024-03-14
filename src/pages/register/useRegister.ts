@@ -50,7 +50,7 @@ export default function useRegister() {
     })
   }
 
-  const checkIfThisTimeExists = (time: number) => {
+  const canIAddThisTime = (time: number) => {
     return !contentInteractive.filter(
       (item) =>
         item.time === time || (item.time < time + 60 && item.time > time - 60),
@@ -65,6 +65,6 @@ export default function useRegister() {
     modal,
     handleChange,
     handleAddContentInteractive,
-    checkIfThisTimeExists,
+    canIAddThisTime,
   }
 }
