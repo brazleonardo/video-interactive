@@ -65,6 +65,7 @@ const VideoUpload = ({ src }: Props) => {
                 <Component.Marker
                   type={item.type}
                   status={'viewed'}
+                  hasClick
                   onClick={() => handleOpenModalContent(item.time)}
                 />
               </Component.MarkerSlider>

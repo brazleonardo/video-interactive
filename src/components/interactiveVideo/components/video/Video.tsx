@@ -69,11 +69,7 @@ function Video() {
                 key={item.time}
                 left={onMarkerBar(item.time)}
               >
-                <Component.Marker
-                  type={item.type}
-                  status={item.status}
-                  time={item.time}
-                />
+                <Component.Marker type={item.type} status={item.status} />
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>
