@@ -4,27 +4,31 @@ import { BiError } from 'react-icons/bi'
 
 import When from '@/components/when'
 
-import { TypeMessage } from '@/types/message'
+import { TypeStatusMessage } from '@/types/message'
 
 export { When, TbInfoSquareRounded, BiError }
 
+function colorStatus({ ...props }) {
+  if (props.status === 'success') {
+    return props.theme.colors.successBtn
+  }
+  if (props.status === 'error') {
+    return props.theme.colors.errorBtn
+  }
+
+  return props.theme.colors.infoBtn
+}
+
 export const Container = styled.div.attrs({ className: 'alert--message' })<{
-  status: TypeMessage
+  status: TypeStatusMessage
 }>`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 2rem;
-  border: 1px solid
-    ${(props) =>
-      props.status === 'success'
-        ? props.theme.colors.successBtn
-        : props.theme.colors.errorBtn};
-  color: ${(props) =>
-    props.status === 'success'
-      ? props.theme.colors.successBtn
-      : props.theme.colors.errorBtn};
+  border: 1px solid ${(props) => colorStatus(props)};
+  color: ${(props) => colorStatus(props)};
   border-radius: 4px;
   font-size: 2rem;
 `

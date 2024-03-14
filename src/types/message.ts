@@ -1,8 +1,8 @@
-export type TypeMessage = 'success' | 'error'
+export type TypeStatusMessage = 'success' | 'error' | 'info'
 
 export interface PropsMessage {
   open: boolean
   title: string
-  status?: TypeMessage
+  status: TypeStatusMessage
   text?: string
 }

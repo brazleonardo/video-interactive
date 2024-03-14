@@ -19,6 +19,7 @@ export default function useRegister() {
   const [message, setMessage] = useState<PropsMessage>({
     open: false,
     title: '',
+    status: 'info',
   })
 
   const handleChange = useCallback(

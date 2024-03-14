@@ -10,6 +10,7 @@ export const theme = {
     viewedBtn: '#e0bf05',
     successBtn: '#06b45d',
     errorBtn: '#db1717',
+    infoBtn: '#0c83e6',
     disabledBtn: '#b1b1b1',
     textPrimaryContrast: '#ffffff',
     textSecondaryContrast: '#111111',
