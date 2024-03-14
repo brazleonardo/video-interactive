@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
   input, textarea {
     outline: none;
 
-    &:focus {
+    &:not([type=checkbox]):not([type=radio]):not([type=range]):focus {
       box-shadow: inset 0 0 10px rgba(30, 30, 30, 0.7);
     }
   }

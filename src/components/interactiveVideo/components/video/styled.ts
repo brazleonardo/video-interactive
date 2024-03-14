@@ -181,7 +181,7 @@ export const WrapVolume = styled.div`
 
   &:hover {
     button {
-      opacity: 0.4;
+      opacity: 0.1;
     }
 
     input[type='range'] {
