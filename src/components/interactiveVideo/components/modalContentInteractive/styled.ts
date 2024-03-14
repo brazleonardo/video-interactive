@@ -33,7 +33,6 @@ export const Container = styled.div`
   max-width: 860px;
   min-height: 380px;
   margin: auto;
-  padding: 2rem;
   position: relative;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -50,7 +49,25 @@ export const Container = styled.div`
   }
 `
 
+export const Header = styled.div`
+  width: 100%;
+  height: 60px;
+  padding: 0 2rem;
+  background-color: ${(props) => props.theme.colors.primary};
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  h3 {
+    color: ${(props) => props.theme.colors.textPrimaryContrast};
+  }
+`
+
 export const Content = styled.div`
+  padding: 2rem;
   position: relative;
   z-index: 1;
 `
@@ -58,7 +75,6 @@ export const Content = styled.div`
 export const Title = styled.h3`
   font-size: 18px;
   color: ${(props) => props.theme.colors.primary};
-  margin-bottom: 40px;
 `
 
 export const Form = styled.form`
@@ -68,6 +84,39 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+`
+
+export const GroupButtonRadio = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem;
+
+  button {
+    border-radius: 0;
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+  }
+`
+
+export const ButtonRadio = styled(Button).attrs({ size: 'small' })<{
+  $actived: boolean
+}>`
+  border: 1px solid
+    ${(props) =>
+      props.$actived
+        ? props.theme.colors.primary
+        : props.theme.colors.disabledBtn};
+  background-color: ${(props) =>
+    props.$actived
+      ? props.theme.colors.primary
+      : props.theme.colors.disabledBtn};
 `
 
 export const GroupButton = styled.div`

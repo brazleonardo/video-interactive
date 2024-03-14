@@ -12,6 +12,7 @@ function Register() {
     modal,
     handleChange,
     handleAddContentInteractive,
+    checkIfThisTimeExists,
   } = useRegister()
   return (
     <>
@@ -28,7 +29,13 @@ function Register() {
 
           <Component.When is={!!file}>
             <Component.GroupButton>
-              <Component.When is={!!statuPaused && statuPaused.time! > 10}>
+              <Component.When
+                is={
+                  !!statuPaused &&
+                  statuPaused.time! > 10 &&
+                  checkIfThisTimeExists(statuPaused.time!)
+                }
+              >
                 <Component.ButtonAdd
                   type="button"
                   onClick={handleAddContentInteractive}

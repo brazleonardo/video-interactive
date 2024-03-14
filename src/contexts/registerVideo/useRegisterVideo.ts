@@ -21,6 +21,7 @@ interface Props {
   modal: PropsModalContentInteractive
   onStatuPaused(value: StatusPaused | null): void
   onOpenModal(value: PropsModalContentInteractive): void
+  onCloseModal(): void
   setContentInteractive: Dispatch<
     SetStateAction<PropsVideoInteractiveRegister[]>
   >
@@ -51,6 +52,13 @@ export function useRegisterVideoProvider() {
     setModal(value)
   }
 
+  const onCloseModal = () => {
+    setModal((oldModal) => ({
+      ...oldModal,
+      open: false,
+    }))
+  }
+
   useEffect(() => {
     setIsLoadingPage(false)
   }, [])
@@ -63,6 +71,7 @@ export function useRegisterVideoProvider() {
       modal,
       onStatuPaused,
       onOpenModal,
+      onCloseModal,
       setContentInteractive,
     }),
     [isLoadingPage, contentInteractive, statuPaused, modal],

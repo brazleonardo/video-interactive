@@ -50,6 +50,12 @@ export default function useRegister() {
     })
   }
 
+  const checkIfThisTimeExists = (time: number) => {
+    return !contentInteractive.find(
+      (item) => item.time === time && item.time <= time + 15,
+    )
+  }
+
   return {
     file,
     urlVideo,
@@ -58,5 +64,6 @@ export default function useRegister() {
     modal,
     handleChange,
     handleAddContentInteractive,
+    checkIfThisTimeExists,
   }
 }

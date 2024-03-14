@@ -9,6 +9,7 @@ export const theme = {
     primaryBtn: '#111111',
     viewedBtn: '#e0bf05',
     successBtn: '#06b45d',
+    disabledBtn: '#b1b1b1',
     textPrimaryContrast: '#ffffff',
     textSecondaryContrast: '#111111',
     barVideoSlider: '#ffffff',
