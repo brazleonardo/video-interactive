@@ -44,7 +44,7 @@ export default function useModalContentInteractive() {
 
     setContentInteractive((oldContentInteractive) => {
       oldContentInteractive.map((item) => {
-        if (item.time === modal.data.statuPaused?.time) {
+        if (item.time === modal.data.statuPaused!.time) {
           item.content.question = modal.data.fields.question
           item.type = modal.data.type
         }

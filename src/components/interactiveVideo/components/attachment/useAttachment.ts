@@ -216,8 +216,11 @@ export default function useAttachment() {
         ...oldModal,
         open: true,
         data: {
-          ...oldModal.data,
           type: values!.type,
+          statuPaused: {
+            time: values!.time,
+            timeFormated: values!.timeFormated,
+          },
           fields: {
             question: values?.content.question ?? '',
             answers: values?.content.answers ?? [],
