@@ -2,6 +2,7 @@ import { useState, useCallback, ChangeEvent } from 'react'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
 import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
+import { PropsMessage } from '@/types/message'
 
 export default function useRegister() {
   const {
@@ -14,6 +15,11 @@ export default function useRegister() {
 
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
+  const [isLoadingForm, setIsLoadingForm] = useState(false)
+  const [message, setMessage] = useState<PropsMessage>({
+    open: false,
+    title: '',
+  })
 
   const handleChange = useCallback(
     ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
@@ -60,15 +66,29 @@ export default function useRegister() {
   const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log({
-      file,
-      contentInteractive,
-    })
+    setIsLoadingForm(true)
+
+    setTimeout(() => {
+      console.log({
+        file,
+        contentInteractive,
+      })
+
+      setMessage({
+        open: true,
+        title: 'O vídeo foi cadastrado com sucesso!',
+        status: 'success',
+      })
+
+      setIsLoadingForm(false)
+    }, 2000)
   }
 
   return {
     file,
     urlVideo,
+    isLoadingForm,
+    message,
     contentInteractive,
     statuPaused,
     modal,

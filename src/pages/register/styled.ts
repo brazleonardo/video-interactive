@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
 import When from '@/components/when'
+import Message from '@/components/ui/message'
+import Form from '@/components/ui/form'
 import ButtonUpload from '@/components/ui/buttonUpload'
 import Button from '@/components/ui/button'
 import { ModalContentInteractive } from '@/components/interactiveVideo'
 
-export { When, ButtonUpload, Button, ModalContentInteractive }
+export { When, Message, Form, ButtonUpload, Button, ModalContentInteractive }
 
 export const Container = styled.div`
   width: 100%;
@@ -16,6 +18,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
+  transition: all 0.4s ease-in-out;
+
+  .alert--message {
+    margin-top: 40px;
+  }
 `
 
 export const Title = styled.h1`
@@ -32,7 +39,7 @@ export const Text = styled.p`
   text-align: center;
 `
 
-export const Form = styled.form`
+export const InnerForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
