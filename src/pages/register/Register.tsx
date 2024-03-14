@@ -19,14 +19,13 @@ function Register() {
       <Component.Container>
         <Component.Title>Cadastro de vídeo</Component.Title>
         <Component.Text>Adicione vídeo com interatividade</Component.Text>
-
         <Component.Form>
           <Component.ButtonUpload
+            accept=".mp4"
             label="Anexar o vídeo"
             url={urlVideo}
             onChange={handleChange}
           />
-
           <Component.When is={!!file}>
             <Component.GroupButton>
               <Component.When

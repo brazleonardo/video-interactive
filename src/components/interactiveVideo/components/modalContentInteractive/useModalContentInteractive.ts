@@ -66,8 +66,12 @@ export default function useModalContentInteractive() {
         return item
       })
 
+      console.log(oldContentInteractive)
+
       return oldContentInteractive
     })
+
+    onCloseModal()
   }
 
   return { fields, onCancel, onChangeType, onChange, onSubmit }

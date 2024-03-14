@@ -27,7 +27,10 @@ export const Marker = styled.span<{ $status: TypeStatusMarker }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: ${(props) =>
+    props.$status === 'viewed'
+      ? props.theme.colors.textSecondaryContrast
+      : props.theme.colors.textPrimaryContrast};
   transition: all 0.5s ease-in-out;
 
   &:after {
