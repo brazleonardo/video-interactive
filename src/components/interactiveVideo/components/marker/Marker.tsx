@@ -16,28 +16,28 @@ interface Props {
 const Marker = ({ type, status, onClick }: Props) => {
   if (type === 'info') {
     return (
-      <Component.Marker $status={status} onClick={onClick}>
+      <Component.Marker $hasClick $status={status} onClick={onClick}>
         <Component.FaInfo />
       </Component.Marker>
     )
   }
   if (type === 'check') {
     return (
-      <Component.Marker $status={status} onClick={onClick}>
+      <Component.Marker $hasClick $status={status} onClick={onClick}>
         <Component.FaCheck />
       </Component.Marker>
     )
   }
   if (type === 'quiz') {
     return (
-      <Component.Marker $status={status} onClick={onClick}>
+      <Component.Marker $hasClick $status={status} onClick={onClick}>
         <Component.FaQuestion />
       </Component.Marker>
     )
   }
   if (type === 'comment') {
     return (
-      <Component.Marker $status={status} onClick={onClick}>
+      <Component.Marker $hasClick $status={status} onClick={onClick}>
         <Component.FaRegCommentAlt />
       </Component.Marker>
     )
