@@ -57,6 +57,15 @@ export default function useRegister() {
     ).length
   }
 
+  const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    console.log({
+      file,
+      contentInteractive,
+    })
+  }
+
   return {
     file,
     urlVideo,
@@ -66,5 +75,6 @@ export default function useRegister() {
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,
+    onSubmit,
   }
 }

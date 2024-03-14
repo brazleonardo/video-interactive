@@ -13,13 +13,18 @@ function Register() {
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,
+    onSubmit,
   } = useRegister()
   return (
     <>
       <Component.Container>
         <Component.Title>Cadastro de vídeo</Component.Title>
         <Component.Text>Adicione vídeo com interatividade</Component.Text>
-        <Component.Form>
+        <Component.Form
+          method="post"
+          onSubmit={onSubmit}
+          encType="multipart/form-data"
+        >
           <Component.ButtonUpload
             accept=".mp4"
             label="Anexar o vídeo"
