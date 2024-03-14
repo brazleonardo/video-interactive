@@ -8,33 +8,35 @@ import {
 interface Props {
   type: TypeIteractiveContent
   status: TypeStatusMarker
+  time: number
+  onClick?(time: number): void
 }
 
-const Marker = ({ type, status }: Props) => {
+const Marker = ({ type, status, time, onClick }: Props) => {
   if (type === 'info') {
     return (
-      <Component.Marker $status={status}>
+      <Component.Marker $status={status} onClick={() => onClick!(time)}>
         <Component.FaInfo />
       </Component.Marker>
     )
   }
   if (type === 'check') {
     return (
-      <Component.Marker $status={status}>
+      <Component.Marker $status={status} onClick={() => onClick!(time)}>
         <Component.FaCheck />
       </Component.Marker>
     )
   }
   if (type === 'quiz') {
     return (
-      <Component.Marker $status={status}>
+      <Component.Marker $status={status} onClick={() => onClick!(time)}>
         <Component.FaQuestion />
       </Component.Marker>
     )
   }
   if (type === 'comment') {
     return (
-      <Component.Marker $status={status}>
+      <Component.Marker $status={status} onClick={() => onClick!(time)}>
         <Component.FaRegCommentAlt />
       </Component.Marker>
     )

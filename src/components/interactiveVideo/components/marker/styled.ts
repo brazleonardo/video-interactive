@@ -16,7 +16,9 @@ function colorStatus({ ...props }) {
   return props.theme.colors.primaryBtn
 }
 
-export const Marker = styled.span<{ $status: TypeStatusMarker }>`
+export const Marker = styled.button.attrs({ type: 'button' })<{
+  $status: TypeStatusMarker
+}>`
   width: 18px;
   height: 18px;
   background-color: ${(props) => colorStatus(props)};
@@ -27,6 +29,7 @@ export const Marker = styled.span<{ $status: TypeStatusMarker }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0;
   color: ${(props) =>
     props.$status === 'viewed'
       ? props.theme.colors.textSecondaryContrast
