@@ -4,6 +4,11 @@ export type TypeIteractiveContent = 'info' | 'check' | 'quiz' | 'comment'
 
 export type TypeStatusMarker = 'viewed' | 'answered' | null
 
+export type StatusPaused = {
+  time: number | null
+  timeFormated: string | null
+}
+
 export interface PropsPlayer {
   isPlaying: boolean
   currentTime: string
@@ -52,4 +57,17 @@ export interface PropsVideoInteractiveRegister {
   time: number
   timeFormated: string
   type: TypeIteractiveContent
+  content: {
+    question: string | null
+    answers: string[] | null
+    correctAnswer: number | null
+  }
+}
+
+export interface PropsModalContentInteractive {
+  open: boolean
+  data?: {
+    type: TypeIteractiveContent
+    statuPaused: StatusPaused | null
+  }
 }

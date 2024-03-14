@@ -8,18 +8,19 @@ import {
   useEffect,
 } from 'react'
 
-import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
-
-type StatusPaused = {
-  time: number | null
-  timeFormated: string | null
-}
+import {
+  PropsVideoInteractiveRegister,
+  StatusPaused,
+  PropsModalContentInteractive,
+} from '@/types/iteractiveVideo'
 
 interface Props {
   isLoadingPage: boolean
   statuPaused: StatusPaused | null
   contentInteractive: PropsVideoInteractiveRegister[]
+  modal: PropsModalContentInteractive
   onStatuPaused(value: StatusPaused | null): void
+  onOpenModal(value: PropsModalContentInteractive): void
   setContentInteractive: Dispatch<
     SetStateAction<PropsVideoInteractiveRegister[]>
   >
@@ -35,12 +36,19 @@ export function useRegisterVideo() {
 export function useRegisterVideoProvider() {
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [statuPaused, setStatuPaused] = useState<StatusPaused | null>(null)
+  const [modal, setModal] = useState<PropsModalContentInteractive>({
+    open: false,
+  })
   const [contentInteractive, setContentInteractive] = useState<
     PropsVideoInteractiveRegister[]
   >([])
 
   const onStatuPaused = (value: StatusPaused | null) => {
     setStatuPaused(value)
+  }
+
+  const onOpenModal = (value: PropsModalContentInteractive) => {
+    setModal(value)
   }
 
   useEffect(() => {
@@ -52,10 +60,12 @@ export function useRegisterVideoProvider() {
       isLoadingPage,
       contentInteractive,
       statuPaused,
+      modal,
       onStatuPaused,
+      onOpenModal,
       setContentInteractive,
     }),
-    [isLoadingPage, statuPaused, contentInteractive],
+    [isLoadingPage, contentInteractive, statuPaused, modal],
   )
 
   return {

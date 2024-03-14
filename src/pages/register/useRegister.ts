@@ -4,8 +4,13 @@ import { useRegisterVideo } from '@/contexts/registerVideo'
 import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
 
 export default function useRegister() {
-  const { contentInteractive, statuPaused, setContentInteractive } =
-    useRegisterVideo()
+  const {
+    contentInteractive,
+    statuPaused,
+    modal,
+    setContentInteractive,
+    onOpenModal,
+  } = useRegisterVideo()
 
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
@@ -27,8 +32,21 @@ export default function useRegister() {
         time: statuPaused!.time as number,
         timeFormated: statuPaused!.timeFormated!,
         type: 'info',
+        content: {
+          question: null,
+          answers: [],
+          correctAnswer: null,
+        },
       }
       return [...oldContentInteractive, newContentInteractive]
+    })
+
+    onOpenModal({
+      open: true,
+      data: {
+        type: 'info',
+        statuPaused,
+      },
     })
   }
 
@@ -37,6 +55,7 @@ export default function useRegister() {
     urlVideo,
     contentInteractive,
     statuPaused,
+    modal,
     handleChange,
     handleAddContentInteractive,
   }

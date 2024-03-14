@@ -9,6 +9,7 @@ function Register() {
     urlVideo,
     file,
     statuPaused,
+    modal,
     handleChange,
     handleAddContentInteractive,
   } = useRegister()
@@ -40,7 +41,7 @@ function Register() {
           </Component.When>
         </Component.Form>
       </Component.Container>
-      <Component.ModalContentInteractive data={{ open: false, type: 'quiz' }} />
+      <Component.ModalContentInteractive open={modal.open} data={modal.data} />
     </>
   )
 }
