@@ -61,7 +61,7 @@ const VideoUpload = ({ src }: Props) => {
                 key={item.time}
                 left={onMarkerBar(item.time)}
               >
-                <Component.Marker type={item.type} status="viewed" />
+                <Component.Marker type={item.type} status={'viewed'} />
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>

@@ -8,7 +8,8 @@ const ModalContentInteractive = ({
   open,
   data,
 }: PropsModalContentInteractive) => {
-  const { onChangeType, onCancel } = useModalContentInteractive()
+  const { onChangeType, onChange, onSubmit, onCancel } =
+    useModalContentInteractive()
   if (open) {
     return (
       <Component.Modal>
@@ -19,7 +20,7 @@ const ModalContentInteractive = ({
             </Component.Title>
           </Component.Header>
           <Component.Content>
-            <Component.Form>
+            <Component.Form method="post" onSubmit={onSubmit}>
               <Component.GroupButtonRadio>
                 <Component.ButtonRadio
                   $actived={data!.type === 'info'}
@@ -46,7 +47,10 @@ const ModalContentInteractive = ({
                   Comentário
                 </Component.ButtonRadio>
               </Component.GroupButtonRadio>
-              <Component.FormContentType type={data!.type} />
+              <Component.FormContentType
+                type={data!.type}
+                onChange={onChange}
+              />
               <Component.GroupButton>
                 <Component.Button onClick={onCancel}>Cancelar</Component.Button>
                 <Component.Button type="submit">Salvar</Component.Button>
