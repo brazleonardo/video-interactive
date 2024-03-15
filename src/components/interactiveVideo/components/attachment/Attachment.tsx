@@ -6,7 +6,7 @@ interface Props {
   src: string
 }
 
-const VideoUpload = ({ src }: Props) => {
+const Attachment = ({ src }: Props) => {
   const {
     videoRef,
     sliderRef,
@@ -90,4 +90,4 @@ const VideoUpload = ({ src }: Props) => {
   )
 }
 
-export default VideoUpload
+export default Attachment
