@@ -83,3 +83,9 @@ export interface PropsModalContentInteractive {
     fields: PropsModalContentInteractiveFields
   }
 }
+
+export interface PropsModalContentInteractiveFieldsError {
+  question: string
+  answers: string[]
+  correctAnswer: string
+}

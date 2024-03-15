@@ -6,6 +6,7 @@ const ModalContentInteractive = () => {
   const {
     modal,
     message,
+    error,
     onChangeType,
     onChange,
     onAddResponse,
@@ -59,6 +60,7 @@ const ModalContentInteractive = () => {
                 <Component.FormContentType
                   type={modal.data.type}
                   fields={modal.data.fields}
+                  error={error}
                   onChange={onChange}
                   onAddResponse={onAddResponse}
                   onRemoveResponse={onRemoveResponse}
