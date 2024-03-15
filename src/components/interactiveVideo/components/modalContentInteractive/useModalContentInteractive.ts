@@ -28,16 +28,20 @@ export default function useModalContentInteractive() {
     { target }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     id?: string,
   ) => {
-    const { name, value } = target
+    const { name, value, type } = target
 
     setModal((oldModal) => {
       if (oldModal.data.type === 'quiz' && id) {
         oldModal.data.fields.answers.map((item) => {
-          if (item.id === id) {
+          if (item.id === id && type === 'text') {
             item.text = value
           }
           return item
         })
+
+        if (type === 'radio') {
+          oldModal.data.fields.correctAnswer = value
+        }
 
         return {
           ...oldModal,

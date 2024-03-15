@@ -40,21 +40,31 @@ const FormContentType = ({
           {fields.answers?.map((item, index) => (
             <Component.GroupInput key={item.id}>
               <Component.LabelNumber>( {index + 1} ); </Component.LabelNumber>
-              <Component.Radio name="quiz" value={item.id} />
+              <Component.Radio
+                name="quiz"
+                value={item.id}
+                checked={fields.correctAnswer === item.id}
+                onChange={(e) => onChange(e, item.id)}
+              />
               <Component.Input
                 name={`answers_${item.id}`}
                 placeholder="Digite uma resposta"
                 value={item.text}
                 onChange={(e) => onChange(e, item.id)}
               />
-              <Component.ButtonRemove onClick={() => onRemoveResponse(item.id)}>
+              <Component.ButtonRemove
+                onClick={() => onRemoveResponse(item.id)}
+                disabled={fields.answers.length <= 2}
+              >
                 <Component.MdDeleteForever />
               </Component.ButtonRemove>
             </Component.GroupInput>
           ))}
-          <Component.Button type="button" onClick={onAddResponse}>
-            Adicionar resposta
-          </Component.Button>
+          <Component.When is={fields.answers.length <= 3}>
+            <Component.Button type="button" onClick={onAddResponse}>
+              Adicionar resposta
+            </Component.Button>
+          </Component.When>
         </Component.WrapResponses>
       </Component.Container>
     )

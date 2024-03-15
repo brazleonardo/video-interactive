@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { MdDeleteForever } from 'react-icons/md'
 
+import When from '@/components/when'
 import Button from '@/components/ui/button'
 
 import { darken } from '@/utils'
 
-export { Button, MdDeleteForever }
+export { When, Button, MdDeleteForever }
 
 export const Container = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ export const WrapResponses = styled.div`
       background-color: ${(props) => props.theme.colors.textPrimaryContrast};
       border: 1px solid ${(props) => props.theme.colors.primary};
 
-      &:hover {
+      &:not(:disabled):hover {
         background-color: ${(props) =>
           darken(props.theme.colors.textPrimaryContrast, -50)};
       }
@@ -84,4 +85,9 @@ export const ButtonRemove = styled.button.attrs({ type: 'button' })`
   font-size: 20px;
   padding: 0;
   border-radius: 4px;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
 `
