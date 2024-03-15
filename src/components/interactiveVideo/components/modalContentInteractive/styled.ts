@@ -6,6 +6,10 @@ import Form from '@/components/ui/form'
 
 import FormContentType from './components/formContentType'
 
+interface PropsButtonRadio {
+  $actived: boolean
+}
+
 export { Button, Message, Form, FormContentType }
 
 export const Modal = styled.div`
@@ -107,9 +111,9 @@ export const GroupButtonRadio = styled.div`
   }
 `
 
-export const ButtonRadio = styled(Button).attrs({ size: 'small' })<{
-  $actived: boolean
-}>`
+export const ButtonRadio = styled(Button).attrs({
+  size: 'small',
+})<PropsButtonRadio>`
   border: 1px solid
     ${(props) =>
       props.$actived

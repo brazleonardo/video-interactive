@@ -6,6 +6,10 @@ import Button from '@/components/ui/button'
 
 import { darken } from '@/utils'
 
+interface PropsError {
+  $error?: boolean
+}
+
 export { When, Button, MdDeleteForever }
 
 export const Container = styled.div`
@@ -19,9 +23,7 @@ export const Label = styled.label`
   line-height: 1.3;
 `
 
-export const TextArea = styled.textarea<{
-  $error?: boolean
-}>`
+export const TextArea = styled.textarea<PropsError>`
   min-height: 100px;
   max-height: 150px;
   padding: 0.5rem;
@@ -34,7 +36,7 @@ export const TextArea = styled.textarea<{
   resize: vertical;
 `
 
-export const WrapResponses = styled.div<{ $error: boolean }>`
+export const WrapResponses = styled.div<PropsError>`
   && {
     display: flex;
     flex-direction: column;
@@ -97,9 +99,7 @@ export const LabelNumber = styled.span`
   justify-content: center;
 `
 
-export const InputText = styled.input<{
-  $error?: boolean
-}>`
+export const InputText = styled.input<PropsError>`
   width: calc(100% - 100px);
   height: 40px;
   padding: 0.5rem;

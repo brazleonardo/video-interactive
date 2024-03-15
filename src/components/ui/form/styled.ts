@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Form = styled.form<{ $isLoading: boolean }>`
+interface PropsForm {
+  $isLoading: boolean
+}
+
+export const Form = styled.form<PropsForm>`
   position: relative;
 
   filter: ${(props) => (props.$isLoading ? `blur(2px)` : `blur(0)`)};

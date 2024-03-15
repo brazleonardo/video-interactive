@@ -6,6 +6,10 @@ import When from '@/components/when'
 
 import { TypeStatusMessage } from '@/types/message'
 
+interface PropsContainer {
+  status: TypeStatusMessage
+}
+
 export { When, TbInfoSquareRounded, BiError }
 
 function colorStatus({ ...props }) {
@@ -19,9 +23,9 @@ function colorStatus({ ...props }) {
   return props.theme.colors.infoBtn
 }
 
-export const Container = styled.div.attrs({ className: 'alert--message' })<{
-  status: TypeStatusMessage
-}>`
+export const Container = styled.div.attrs({
+  className: 'alert--message',
+})<PropsContainer>`
   display: flex;
   flex-wrap: wrap;
   align-items: center;

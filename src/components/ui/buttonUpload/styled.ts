@@ -5,6 +5,10 @@ import When from '@/components/when'
 import { Attachment } from '@/components/interactiveVideo'
 import Button from '../button'
 
+interface PropsInner {
+  $hasFile: boolean
+}
+
 export { When, Attachment, Button, MdOutlineCloudUpload }
 
 export const Container = styled.div`
@@ -15,7 +19,7 @@ export const Container = styled.div`
   gap: 30px;
 `
 
-export const Inner = styled.div<{ $hasFile: boolean }>`
+export const Inner = styled.div<PropsInner>`
   button {
     position: relative;
     overflow: hidden;

@@ -5,6 +5,10 @@ import When from '@/components/when'
 import Button from '@/components/ui/button'
 import { Marker, VolumeIcon } from '@/components/interactiveVideo'
 
+interface PropsMarkerSlider {
+  left: string
+}
+
 export { When, Button, Marker, FaPlay, FaPause, VolumeIcon }
 
 export const Container = styled.div`
@@ -142,7 +146,7 @@ export const Time = styled.span`
   display: block;
 `
 
-export const MarkerSlider = styled.div<{ left: string }>`
+export const MarkerSlider = styled.div<PropsMarkerSlider>`
   width: 8px;
   height: 8px;
   background-color: #db5b30;

@@ -4,6 +4,12 @@ import { FaPlay } from 'react-icons/fa6'
 import When from '@/components/when'
 import Button from '@/components/ui/button'
 
+interface PropsAnswer {
+  $isChecked: boolean
+  $finished: boolean
+  $isCorrect: boolean
+}
+
 export { When, Button, FaPlay }
 
 function colorRadioQuiz({ ...props }) {
@@ -58,11 +64,7 @@ export const Answers = styled.div`
   gap: 10px;
 `
 
-export const Answer = styled.label<{
-  $isChecked: boolean
-  $finished: boolean
-  $isCorrect: boolean
-}>`
+export const Answer = styled.label<PropsAnswer>`
   width: auto;
   display: flex;
   align-items: center;
