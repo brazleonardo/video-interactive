@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 import Button from '@/components/ui/button'
+import Message from '@/components/ui/message'
 import Form from '@/components/ui/form'
 
 import FormContentType from './components/formContentType'
 
-export { Button, FormContentType, Form }
+export { Button, Message, Form, FormContentType }
 
 export const Modal = styled.div`
   width: 100%;

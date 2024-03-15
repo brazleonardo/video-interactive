@@ -1,12 +1,19 @@
-import { ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
 
 import { TypeIteractiveContent } from '@/types/iteractiveVideo'
+import { PropsMessage } from '@/types/message'
 
 export default function useModalContentInteractive() {
   const { modal, onCloseModal, setModal, setContentInteractive } =
     useRegisterVideo()
+
+  const [message, setMessage] = useState<PropsMessage>({
+    open: false,
+    title: '',
+    status: 'info',
+  })
 
   const onCancel = () => {
     onCloseModal()
@@ -58,6 +65,12 @@ export default function useModalContentInteractive() {
         },
       }
     })
+
+    setMessage({
+      open: false,
+      title: '',
+      status: 'info',
+    })
   }
 
   const onAddResponse = () => {
@@ -101,12 +114,50 @@ export default function useModalContentInteractive() {
     })
   }
 
+  const onMessageError = (title: string) => {
+    setMessage({
+      title,
+      open: true,
+      status: 'error',
+    })
+  }
+
   const onValidate = () => {
-    if (!modal.data.type) {
-      return false
+    let error = 0
+    if (modal.data.fields.question === '') {
+      onMessageError('Ops! Você precisa preencher a pergunta.')
+      error++
+
+      return !error
+    }
+    if (modal.data.type === 'quiz') {
+      if (modal.data.fields.answers.length < 2) {
+        onMessageError('Ops! Você precisa adicionar pelo menos 2 respostas.')
+        error++
+
+        return !error
+      }
+      modal.data.fields.answers.forEach((item) => {
+        if (item.text === '') {
+          onMessageError('Ops! Você precisa preencher a resposta.')
+          error++
+
+          return !error
+        }
+      })
+      if (!modal.data.fields.correctAnswer) {
+        onMessageError('Ops! Você precisa marcar a resposta certa.')
+        error++
+
+        return !error
+      }
     }
 
-    return true
+    if (error > 1) {
+      onMessageError('Ops! Você precisa preencher os campos abaixo!')
+    }
+
+    return !error
   }
 
   const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
@@ -138,6 +189,7 @@ export default function useModalContentInteractive() {
 
   return {
     modal,
+    message,
     onCancel,
     onChangeType,
     onChange,

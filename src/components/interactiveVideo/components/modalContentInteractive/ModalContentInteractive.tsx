@@ -5,6 +5,7 @@ import useModalContentInteractive from './useModalContentInteractive'
 const ModalContentInteractive = () => {
   const {
     modal,
+    message,
     onChangeType,
     onChange,
     onAddResponse,
@@ -24,6 +25,11 @@ const ModalContentInteractive = () => {
           <Component.Content>
             <Component.Form method="POST" onSubmit={onSubmit}>
               <Component.InnerForm>
+                <Component.Message
+                  open={message.open}
+                  title={message.title}
+                  status={message?.status}
+                />
                 <Component.GroupButtonRadio>
                   <Component.ButtonRadio
                     $actived={modal.data.type === 'info'}
