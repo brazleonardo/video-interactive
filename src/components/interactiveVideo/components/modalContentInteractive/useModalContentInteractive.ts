@@ -13,34 +13,104 @@ export default function useModalContentInteractive() {
   }
 
   const onChangeType = (type: TypeIteractiveContent) => {
-    setModal((oldModal) => ({
-      ...oldModal,
-      data: {
-        ...oldModal.data,
-        type,
-      },
-    }))
+    setModal((oldModal) => {
+      return {
+        ...oldModal,
+        data: {
+          ...oldModal.data,
+          type,
+        },
+      }
+    })
   }
 
-  const onChange = ({
-    target,
-  }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChange = (
+    { target }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    id?: string,
+  ) => {
     const { name, value } = target
 
-    setModal((oldModal) => ({
-      ...oldModal,
-      data: {
-        ...oldModal.data,
-        fields: {
-          ...oldModal.data.fields,
-          [name]: value,
+    setModal((oldModal) => {
+      if (oldModal.data.type === 'quiz' && id) {
+        oldModal.data.fields.answers.map((item) => {
+          if (item.id === id) {
+            item.text = value
+          }
+          return item
+        })
+
+        return {
+          ...oldModal,
+        }
+      }
+      return {
+        ...oldModal,
+        data: {
+          ...oldModal.data,
+          fields: {
+            ...oldModal.data.fields,
+            [name]: value,
+          },
         },
-      },
-    }))
+      }
+    })
+  }
+
+  const onAddResponse = () => {
+    setModal((oldModal) => {
+      const id =
+        Math.random().toString(36).substring(2) +
+        new Date().getTime().toString(36)
+
+      return {
+        ...oldModal,
+        data: {
+          ...oldModal.data,
+          fields: {
+            ...oldModal.data.fields,
+            answers: [...oldModal.data.fields.answers, { id, text: '' }],
+          },
+        },
+      }
+    })
+  }
+
+  const onRemoveResponse = (id: string) => {
+    console.log(id)
+    setModal((oldModal) => {
+      console.log('index', oldModal.data.fields.answers.length)
+      if (oldModal.data.fields.answers.length < 1) {
+        return oldModal
+      }
+      return {
+        ...oldModal,
+        data: {
+          ...oldModal.data,
+          fields: {
+            ...oldModal.data.fields,
+            answers: [
+              ...oldModal.data.fields.answers.filter((item) => item.id !== id),
+            ],
+          },
+        },
+      }
+    })
+  }
+
+  const onValidate = () => {
+    if (!modal.data.type) {
+      return false
+    }
+
+    return true
   }
 
   const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (!onValidate()) {
+      return
+    }
 
     setContentInteractive((oldContentInteractive) => {
       oldContentInteractive.map((item) => {
@@ -52,13 +122,19 @@ export default function useModalContentInteractive() {
         return item
       })
 
-      console.log(oldContentInteractive)
-
       return oldContentInteractive
     })
 
     onCloseModal()
   }
 
-  return { modal, onCancel, onChangeType, onChange, onSubmit }
+  return {
+    modal,
+    onCancel,
+    onChangeType,
+    onChange,
+    onAddResponse,
+    onRemoveResponse,
+    onSubmit,
+  }
 }

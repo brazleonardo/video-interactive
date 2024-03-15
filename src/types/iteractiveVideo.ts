@@ -9,6 +9,11 @@ export type StatusPaused = {
   timeFormated: string | null
 }
 
+export type TypeAnswers = {
+  id: string
+  text: string
+}
+
 export interface PropsPlayer {
   isPlaying: boolean
   currentTime: string
@@ -59,15 +64,15 @@ export interface PropsVideoInteractiveRegister {
   type: TypeIteractiveContent
   content: {
     question: string | null
-    answers: string[] | null
-    correctAnswer: number | null
+    answers: TypeAnswers[] | null
+    correctAnswer: string | null
   }
 }
 
 export interface PropsModalContentInteractiveFields {
   question: string
-  answers?: string[]
-  correctAnswer?: number | null
+  answers: TypeAnswers[]
+  correctAnswer?: string | null
 }
 
 export interface PropsModalContentInteractive {

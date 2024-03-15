@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 import Button from '@/components/ui/button'
+import Form from '@/components/ui/form'
 
 import FormContentType from './components/formContentType'
 
-export { Button, FormContentType }
+export { Button, FormContentType, Form }
 
 export const Modal = styled.div`
   width: 100%;
@@ -77,7 +78,7 @@ export const Title = styled.h3`
   color: ${(props) => props.theme.colors.primary};
 `
 
-export const Form = styled.form`
+export const InnerForm = styled.div`
   width: 100%;
   min-height: 250px;
   display: flex;
