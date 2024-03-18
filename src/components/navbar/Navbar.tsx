@@ -7,10 +7,20 @@ export default function Navbar() {
   return (
     <Component.Container>
       <Component.Inner>
-        <Component.ItemLink $actived={pathname === '/'} to="/">
+        <Component.ItemLink
+          to="/"
+          $actived={pathname === '/'}
+          aria-disabled={pathname === '/'}
+        >
+          <Component.FaHome size={18} />
           Home
         </Component.ItemLink>
-        <Component.ItemLink $actived={pathname === '/register'} to="/register">
+        <Component.ItemLink
+          to="/register"
+          $actived={pathname === '/register'}
+          aria-disabled={pathname === '/register'}
+        >
+          <Component.RiVideoAddFill size={18} />
           Cadastro de vídeo
         </Component.ItemLink>
       </Component.Inner>

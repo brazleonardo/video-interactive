@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { FaHome } from 'react-icons/fa'
+import { RiVideoAddFill } from 'react-icons/ri'
 
 import { darken } from '@/utils'
+
+export { FaHome, RiVideoAddFill }
 
 interface PropsLink {
   $actived?: boolean
@@ -33,6 +37,15 @@ export const ItemLink = styled(Link)<PropsLink>`
   color: ${(props) => props.theme.colors.textPrimaryContrast};
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   padding: 0 1.5rem;
   transition: all 0.4s ease-in-out;
+
+  &[aria-disabled='true'] {
+    cursor: default;
+  }
+
+  &[aria-disabled='false']:hover {
+    opacity: 0.7;
+  }
 `
