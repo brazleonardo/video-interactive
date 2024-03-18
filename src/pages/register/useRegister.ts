@@ -5,8 +5,12 @@ import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
 import { PropsMessage } from '@/types/message'
 
 export default function useRegister() {
-  const { contentInteractive, statusPaused, setContentInteractive, setModal } =
-    useRegisterVideo()
+  const {
+    contentInteractiveRegister,
+    statusPaused,
+    setContentInteractiveRegister,
+    setModal,
+  } = useRegisterVideo()
 
   const [file, setFile] = useState<FileList | null>(null)
   const [urlVideo, setUrlVideo] = useState<string>('')
@@ -29,7 +33,7 @@ export default function useRegister() {
   )
 
   const handleAddContentInteractive = () => {
-    setContentInteractive((oldContentInteractive) => {
+    setContentInteractiveRegister((oldContentInteractiveRegister) => {
       const newContentInteractive: PropsVideoInteractiveRegister = {
         time: statusPaused!.time as number,
         timeFormated: statusPaused!.timeFormated!,
@@ -40,7 +44,7 @@ export default function useRegister() {
           correctAnswer: null,
         },
       }
-      return [...oldContentInteractive, newContentInteractive]
+      return [...oldContentInteractiveRegister, newContentInteractive]
     })
 
     setModal({
@@ -58,7 +62,7 @@ export default function useRegister() {
   }
 
   const canIAddThisTime = (time: number) => {
-    return !contentInteractive.filter(
+    return !contentInteractiveRegister.filter(
       (item) =>
         item.time === time || (item.time < time + 60 && item.time > time - 60),
     ).length
@@ -72,7 +76,7 @@ export default function useRegister() {
     setTimeout(() => {
       console.log({
         file,
-        contentInteractive,
+        contentInteractiveRegister,
       })
 
       setMessage({
@@ -90,7 +94,6 @@ export default function useRegister() {
     urlVideo,
     isLoadingForm,
     message,
-    contentInteractive,
     statusPaused,
     confirm,
     handleChange,

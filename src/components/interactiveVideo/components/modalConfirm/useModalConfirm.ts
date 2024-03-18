@@ -1,10 +1,11 @@
 import { useRegisterVideo } from '@/contexts/registerVideo'
 
 export default function useModalConfirm() {
-  const { confirm, onCloseConfirm, setContentInteractive } = useRegisterVideo()
+  const { confirm, onCloseConfirm, setContentInteractiveRegister } =
+    useRegisterVideo()
 
   const handleOnSubmit = () => {
-    setContentInteractive((oldContentInteractive) => {
+    setContentInteractiveRegister((oldContentInteractive) => {
       return [
         ...oldContentInteractive.filter(
           (item) => item.time !== confirm.statusPaused!.time,

@@ -9,7 +9,7 @@ import {
 import { PropsMessage } from '@/types/message'
 
 export default function useModalContentInteractive() {
-  const { modal, onCloseModal, setModal, setContentInteractive } =
+  const { modal, onCloseModal, setModal, setContentInteractiveRegister } =
     useRegisterVideo()
 
   const initialMessage = useMemo(
@@ -211,7 +211,7 @@ export default function useModalContentInteractive() {
       return
     }
 
-    setContentInteractive((oldContentInteractive) => {
+    setContentInteractiveRegister((oldContentInteractive) => {
       oldContentInteractive.map((item) => {
         if (item.time === modal.data.statusPaused!.time) {
           item.content.question = modal.data.fields.question
