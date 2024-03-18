@@ -5,9 +5,18 @@ import Message from '@/components/ui/message'
 import Form from '@/components/ui/form'
 import ButtonUpload from '@/components/ui/buttonUpload'
 import Button from '@/components/ui/button'
+import ModalConfirm from '@/components/interactiveVideo/components/modalConfirm'
 import { ModalContentInteractive } from '@/components/interactiveVideo'
 
-export { When, Message, Form, ButtonUpload, Button, ModalContentInteractive }
+export {
+  When,
+  Message,
+  Form,
+  ButtonUpload,
+  Button,
+  ModalConfirm,
+  ModalContentInteractive,
+}
 
 export const Container = styled.div`
   width: 100%;

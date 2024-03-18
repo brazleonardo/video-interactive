@@ -12,6 +12,7 @@ import {
   PropsVideoInteractiveRegister,
   StatusPaused,
   PropsModalContentInteractive,
+  PropsModalConfirm,
 } from '@/types/iteractiveVideo'
 
 interface Props {
@@ -19,6 +20,9 @@ interface Props {
   statuPaused: StatusPaused | null
   contentInteractive: PropsVideoInteractiveRegister[]
   modal: PropsModalContentInteractive
+  confirm: PropsModalConfirm
+  onOpenConfirm(value: StatusPaused | null): void
+  onCloseConfirm(): void
   onStatuPaused(value: StatusPaused | null): void
   onCloseModal(): void
   setModal: Dispatch<SetStateAction<PropsModalContentInteractive>>
@@ -51,12 +55,32 @@ export function useRegisterVideoProvider() {
     [],
   ) as PropsModalContentInteractive
 
+  const initialConfirm = useMemo(
+    () => ({
+      open: false,
+      statusPaused: null,
+    }),
+    [],
+  ) as PropsModalConfirm
+
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [statuPaused, setStatuPaused] = useState<StatusPaused | null>(null)
   const [modal, setModal] = useState<PropsModalContentInteractive>(initialModal)
+  const [confirm, setConfirm] = useState(initialConfirm)
   const [contentInteractive, setContentInteractive] = useState<
     PropsVideoInteractiveRegister[]
   >([])
+
+  const onOpenConfirm = (statusPaused: StatusPaused | null) => {
+    setConfirm({
+      open: true,
+      statusPaused,
+    })
+  }
+
+  const onCloseConfirm = () => {
+    setConfirm((oldConfirm) => ({ ...oldConfirm, open: false }))
+  }
 
   const onStatuPaused = (value: StatusPaused | null) => {
     setStatuPaused(value)
@@ -79,12 +103,15 @@ export function useRegisterVideoProvider() {
       contentInteractive,
       statuPaused,
       modal,
+      confirm,
+      onOpenConfirm,
+      onCloseConfirm,
       onStatuPaused,
       onCloseModal,
       setModal,
       setContentInteractive,
     }),
-    [isLoadingPage, contentInteractive, statuPaused, modal],
+    [isLoadingPage, contentInteractive, statuPaused, modal, confirm],
   )
 
   return {

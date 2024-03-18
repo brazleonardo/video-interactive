@@ -2,15 +2,8 @@ import styled from 'styled-components'
 
 import Button from '@/components/ui/button'
 import Message from '@/components/ui/message'
-import Form from '@/components/ui/form'
 
-import FormContentType from './components/formContentType'
-
-interface PropsButtonRadio {
-  $actived: boolean
-}
-
-export { Button, Message, Form, FormContentType }
+export { Button, Message }
 
 export const Modal = styled.div`
   width: 100%;
@@ -36,8 +29,8 @@ export const Modal = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 860px;
-  min-height: 380px;
+  max-width: 360px;
+  min-height: 240px;
   margin: auto;
   position: relative;
   border-radius: 4px;
@@ -83,46 +76,17 @@ export const Title = styled.h3`
   color: ${(props) => props.theme.colors.primary};
 `
 
-export const InnerForm = styled.div`
-  width: 100%;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
+export const Text = styled.p`
+  font-size: 1.1rem;
+  color: ${(props) => props.theme.colors.primary};
+  text-align: center;
 `
 
-export const GroupButtonRadio = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.1rem;
-
-  button {
-    border-radius: 0;
-    &:first-child {
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-    }
-    &:last-child {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
-  }
-`
-
-export const ButtonRadio = styled(Button).attrs({
-  size: 'small',
-})<PropsButtonRadio>`
-  border: 1px solid
-    ${(props) =>
-      props.$actived
-        ? props.theme.colors.primary
-        : props.theme.colors.disabledBtn};
-  background-color: ${(props) =>
-    props.$actived
-      ? props.theme.colors.primary
-      : props.theme.colors.disabledBtn};
+export const TextBold = styled.p`
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: ${(props) => props.theme.colors.primary};
+  text-align: center;
 `
 
 export const GroupButton = styled.div`
@@ -131,4 +95,10 @@ export const GroupButton = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  margin-top: 40px;
+
+  button {
+    width: 100%;
+    max-width: 120px;
+  }
 `

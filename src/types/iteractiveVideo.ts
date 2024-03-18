@@ -89,3 +89,8 @@ export interface PropsModalContentInteractiveFieldsError {
   answers: string[]
   correctAnswer: string
 }
+
+export interface PropsModalConfirm {
+  open: boolean
+  statusPaused: StatusPaused | null
+}

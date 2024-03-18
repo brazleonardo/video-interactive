@@ -61,6 +61,7 @@ function Register() {
         </Component.Form>
       </Component.Container>
       <Component.ModalContentInteractive />
+      <Component.ModalConfirm />
     </>
   )
 }

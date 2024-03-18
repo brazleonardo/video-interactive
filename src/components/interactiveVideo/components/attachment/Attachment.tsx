@@ -23,6 +23,7 @@ const Attachment = ({ src }: Props) => {
     handleChangeProgress,
     handleChangeVolume,
     handleOpenModalContent,
+    handleOpenModalConfirm,
   } = useAttachment()
 
   return (
@@ -75,7 +76,10 @@ const Attachment = ({ src }: Props) => {
                   >
                     Editar
                   </Component.ItemButton>
-                  <Component.ItemButton type="button">
+                  <Component.ItemButton
+                    type="button"
+                    onClick={() => handleOpenModalConfirm(item.time)}
+                  >
                     Deletar
                   </Component.ItemButton>
                 </Component.MenuOptions>

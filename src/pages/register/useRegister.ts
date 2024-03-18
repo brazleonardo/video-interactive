@@ -92,6 +92,7 @@ export default function useRegister() {
     message,
     contentInteractive,
     statuPaused,
+    confirm,
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,
