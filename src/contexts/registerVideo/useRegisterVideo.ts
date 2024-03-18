@@ -17,13 +17,13 @@ import {
 
 interface Props {
   isLoadingPage: boolean
-  statuPaused: StatusPaused | null
+  statusPaused: StatusPaused | null
   contentInteractive: PropsVideoInteractiveRegister[]
   modal: PropsModalContentInteractive
   confirm: PropsModalConfirm
   onOpenConfirm(value: StatusPaused | null): void
   onCloseConfirm(): void
-  onStatuPaused(value: StatusPaused | null): void
+  onStatusPaused(value: StatusPaused | null): void
   onCloseModal(): void
   setModal: Dispatch<SetStateAction<PropsModalContentInteractive>>
   setContentInteractive: Dispatch<
@@ -44,7 +44,7 @@ export function useRegisterVideoProvider() {
       open: false,
       data: {
         type: 'info',
-        statuPaused: null,
+        statusPaused: null,
         fields: {
           question: '',
           answers: [],
@@ -64,7 +64,7 @@ export function useRegisterVideoProvider() {
   ) as PropsModalConfirm
 
   const [isLoadingPage, setIsLoadingPage] = useState(true)
-  const [statuPaused, setStatuPaused] = useState<StatusPaused | null>(null)
+  const [statusPaused, setStatusPaused] = useState<StatusPaused | null>(null)
   const [modal, setModal] = useState<PropsModalContentInteractive>(initialModal)
   const [confirm, setConfirm] = useState(initialConfirm)
   const [contentInteractive, setContentInteractive] = useState<
@@ -82,8 +82,8 @@ export function useRegisterVideoProvider() {
     setConfirm((oldConfirm) => ({ ...oldConfirm, open: false }))
   }
 
-  const onStatuPaused = (value: StatusPaused | null) => {
-    setStatuPaused(value)
+  const onStatusPaused = (value: StatusPaused | null) => {
+    setStatusPaused(value)
   }
 
   const onCloseModal = () => {
@@ -101,17 +101,17 @@ export function useRegisterVideoProvider() {
     () => ({
       isLoadingPage,
       contentInteractive,
-      statuPaused,
+      statusPaused,
       modal,
       confirm,
       onOpenConfirm,
       onCloseConfirm,
-      onStatuPaused,
+      onStatusPaused,
       onCloseModal,
       setModal,
       setContentInteractive,
     }),
-    [isLoadingPage, contentInteractive, statuPaused, modal, confirm],
+    [isLoadingPage, contentInteractive, statusPaused, modal, confirm],
   )
 
   return {

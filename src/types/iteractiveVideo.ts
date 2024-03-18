@@ -79,7 +79,7 @@ export interface PropsModalContentInteractive {
   open: boolean
   data: {
     type: TypeIteractiveContent
-    statuPaused: StatusPaused | null
+    statusPaused: StatusPaused | null
     fields: PropsModalContentInteractiveFields
   }
 }

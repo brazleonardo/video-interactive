@@ -15,7 +15,7 @@ import { useRegisterVideo } from '@/contexts/registerVideo'
 import { PropsPlayer } from '@/types/iteractiveVideo'
 
 export default function useAttachment() {
-  const { contentInteractive, onOpenConfirm, onStatuPaused, setModal } =
+  const { contentInteractive, onOpenConfirm, onStatusPaused, setModal } =
     useRegisterVideo()
 
   const initialPlayer = useMemo(
@@ -91,13 +91,13 @@ export default function useAttachment() {
       },
     }))
 
-    onStatuPaused({
+    onStatusPaused({
       time: timeCurrent,
       timeFormated: formatTime(timeCurrent, 'auto'),
     })
 
     sliderRef.current!.style.background = `linear-gradient(to right, ${theme.colors.barVideoSlider} ${progressValue}%, ${theme.colors.secondary} ${progressValue}%)`
-  }, [onStatuPaused])
+  }, [onStatusPaused])
 
   const onVolumeChange = useCallback((event: ChangeEvent<HTMLVideoElement>) => {
     setPlayer((oldPlayer) => ({
@@ -119,13 +119,13 @@ export default function useAttachment() {
     const videoElem = videoRef.current
     const timeCurrent = Math.floor(videoElem!.currentTime)
 
-    onStatuPaused({
+    onStatusPaused({
       time: timeCurrent,
       timeFormated: formatTime(timeCurrent, 'auto'),
     })
 
     setPlayer((oldPlayer) => ({ ...oldPlayer, isPlaying: false }))
-  }, [onStatuPaused])
+  }, [onStatusPaused])
 
   const onMarkerBar = useCallback((pos: number) => {
     if (!videoRef.current) {
@@ -218,7 +218,7 @@ export default function useAttachment() {
         open: true,
         data: {
           type: values!.type,
-          statuPaused: {
+          statusPaused: {
             time: values!.time,
             timeFormated: values!.timeFormated,
           },

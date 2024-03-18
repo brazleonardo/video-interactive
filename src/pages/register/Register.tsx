@@ -10,7 +10,7 @@ function Register() {
     file,
     isLoadingForm,
     message,
-    statuPaused,
+    statusPaused,
     handleChange,
     handleAddContentInteractive,
     canIAddThisTime,
@@ -42,16 +42,16 @@ function Register() {
               <Component.GroupButton>
                 <Component.When
                   is={
-                    !!statuPaused &&
-                    statuPaused.time! > 10 &&
-                    canIAddThisTime(statuPaused.time!)
+                    !!statusPaused &&
+                    statusPaused.time! > 10 &&
+                    canIAddThisTime(statusPaused.time!)
                   }
                 >
                   <Component.ButtonAdd
                     type="button"
                     onClick={handleAddContentInteractive}
                   >
-                    Adicionar conteúdo no tempo {statuPaused?.timeFormated}
+                    Adicionar conteúdo no tempo {statusPaused?.timeFormated}
                   </Component.ButtonAdd>
                 </Component.When>
                 <Component.Button type="submit">Salvar</Component.Button>

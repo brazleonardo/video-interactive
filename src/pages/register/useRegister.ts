@@ -5,7 +5,7 @@ import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
 import { PropsMessage } from '@/types/message'
 
 export default function useRegister() {
-  const { contentInteractive, statuPaused, setContentInteractive, setModal } =
+  const { contentInteractive, statusPaused, setContentInteractive, setModal } =
     useRegisterVideo()
 
   const [file, setFile] = useState<FileList | null>(null)
@@ -31,8 +31,8 @@ export default function useRegister() {
   const handleAddContentInteractive = () => {
     setContentInteractive((oldContentInteractive) => {
       const newContentInteractive: PropsVideoInteractiveRegister = {
-        time: statuPaused!.time as number,
-        timeFormated: statuPaused!.timeFormated!,
+        time: statusPaused!.time as number,
+        timeFormated: statusPaused!.timeFormated!,
         type: 'info',
         content: {
           question: null,
@@ -47,7 +47,7 @@ export default function useRegister() {
       open: true,
       data: {
         type: 'info',
-        statuPaused,
+        statusPaused,
         fields: {
           question: '',
           answers: [],
@@ -91,7 +91,7 @@ export default function useRegister() {
     isLoadingForm,
     message,
     contentInteractive,
-    statuPaused,
+    statusPaused,
     confirm,
     handleChange,
     handleAddContentInteractive,

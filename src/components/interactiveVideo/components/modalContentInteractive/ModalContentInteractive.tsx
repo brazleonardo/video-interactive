@@ -20,7 +20,8 @@ const ModalContentInteractive = () => {
         <Component.Container>
           <Component.Header>
             <Component.Title>
-              Adicionar conteúdo no tempo {modal.data.statuPaused?.timeFormated}
+              Adicionar conteúdo no tempo{' '}
+              {modal.data.statusPaused?.timeFormated}
             </Component.Title>
           </Component.Header>
           <Component.Content>
