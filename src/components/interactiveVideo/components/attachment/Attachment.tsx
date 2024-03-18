@@ -68,6 +68,17 @@ const Attachment = ({ src }: Props) => {
                   hasClick
                   onClick={() => handleOpenModalContent(item.time)}
                 />
+                <Component.MenuOptions>
+                  <Component.ItemButton
+                    type="button"
+                    onClick={() => handleOpenModalContent(item.time)}
+                  >
+                    Editar
+                  </Component.ItemButton>
+                  <Component.ItemButton type="button">
+                    Deletar
+                  </Component.ItemButton>
+                </Component.MenuOptions>
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>

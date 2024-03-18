@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { FaPlay, FaPause } from 'react-icons/fa6'
 
+import { darken } from '@/utils'
+
 import When from '@/components/when'
 import Button from '@/components/ui/button'
 import { Marker, VolumeIcon } from '@/components/interactiveVideo'
@@ -154,6 +156,57 @@ export const MarkerSlider = styled.div<PropsMarkerSlider>`
   top: 0;
   left: ${(props) => props.left}%;
   z-index: 2;
+
+  &:hover {
+    .menu--item-options {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+`
+
+export const MenuOptions = styled.div.attrs({
+  className: 'menu--item-options',
+})`
+  background-color: ${(props) => darken(props.theme.colors.primary, -20)};
+  border: 3px solid ${(props) => darken(props.theme.colors.primary, -20)};
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+
+  &:before {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: ${(props) => darken(props.theme.colors.primary, -20)};
+    z-index: -1;
+  }
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+`
+
+export const ItemButton = styled(Button)`
+  && {
+    width: 100%;
+    border-radius: 0;
+    font-size: 0.9rem;
+    background-color: ${(props) => darken(props.theme.colors.primary, -20)};
+  }
 `
 
 export const WrapVolume = styled.div`
