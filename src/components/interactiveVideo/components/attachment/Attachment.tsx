@@ -58,7 +58,7 @@ const Attachment = ({ src }: Props) => {
               value={player.progress}
               onChange={handleChangeProgress}
             />
-            {contentInteractiveRegister?.map((item) => (
+            {contentInteractiveRegister.data?.map((item) => (
               <Component.MarkerSlider
                 key={item.time}
                 left={onMarkerBar(item.time)}

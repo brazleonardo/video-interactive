@@ -12,8 +12,8 @@ export default function useRegister() {
     setModal,
   } = useRegisterVideo()
 
-  const [file, setFile] = useState<FileList | null>(null)
-  const [urlVideo, setUrlVideo] = useState<string>('')
+  const { file, urlVideo } = contentInteractiveRegister
+
   const [isLoadingForm, setIsLoadingForm] = useState(false)
   const [message, setMessage] = useState<PropsMessage>({
     open: false,
@@ -26,10 +26,13 @@ export default function useRegister() {
       const file = files![0]
       const url = URL.createObjectURL(file)
 
-      setFile(files)
-      setUrlVideo(url)
+      setContentInteractiveRegister((oldContentInteractiveRegister) => ({
+        ...oldContentInteractiveRegister,
+        file: files,
+        urlVideo: url,
+      }))
     },
-    [],
+    [setContentInteractiveRegister],
   )
 
   const handleAddContentInteractive = () => {
@@ -44,7 +47,10 @@ export default function useRegister() {
           correctAnswer: null,
         },
       }
-      return [...oldContentInteractiveRegister, newContentInteractive]
+      return {
+        ...oldContentInteractiveRegister,
+        data: [...oldContentInteractiveRegister.data, newContentInteractive],
+      }
     })
 
     setModal({
@@ -62,7 +68,7 @@ export default function useRegister() {
   }
 
   const canIAddThisTime = (time: number) => {
-    return !contentInteractiveRegister.filter(
+    return !contentInteractiveRegister.data.filter(
       (item) =>
         item.time === time || (item.time < time + 60 && item.time > time - 60),
     ).length
@@ -75,7 +81,6 @@ export default function useRegister() {
 
     setTimeout(() => {
       console.log({
-        file,
         contentInteractiveRegister,
       })
 
@@ -90,11 +95,11 @@ export default function useRegister() {
   }
 
   return {
-    file,
-    urlVideo,
     isLoadingForm,
     message,
     statusPaused,
+    file,
+    urlVideo,
     confirm,
     handleChange,
     handleAddContentInteractive,

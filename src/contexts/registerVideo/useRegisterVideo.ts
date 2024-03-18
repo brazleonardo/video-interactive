@@ -9,7 +9,7 @@ import {
 } from 'react'
 
 import {
-  PropsVideoInteractiveRegister,
+  PropsVideoInteractiveRegisterData,
   StatusPaused,
   PropsModalContentInteractive,
   PropsModalConfirm,
@@ -18,7 +18,7 @@ import {
 interface Props {
   isLoadingPage: boolean
   statusPaused: StatusPaused | null
-  contentInteractiveRegister: PropsVideoInteractiveRegister[]
+  contentInteractiveRegister: PropsVideoInteractiveRegisterData
   modal: PropsModalContentInteractive
   confirm: PropsModalConfirm
   onOpenConfirm(value: StatusPaused | null): void
@@ -27,7 +27,7 @@ interface Props {
   onCloseModal(): void
   setModal: Dispatch<SetStateAction<PropsModalContentInteractive>>
   setContentInteractiveRegister: Dispatch<
-    SetStateAction<PropsVideoInteractiveRegister[]>
+    SetStateAction<PropsVideoInteractiveRegisterData>
   >
 }
 
@@ -63,13 +63,23 @@ export function useRegisterVideoProvider() {
     [],
   ) as PropsModalConfirm
 
+  const initialContentInteractiveRegister = useMemo(
+    () => ({
+      file: null,
+      urlVideo: '',
+      data: [],
+    }),
+    [],
+  ) as PropsVideoInteractiveRegisterData
+
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [statusPaused, setStatusPaused] = useState<StatusPaused | null>(null)
   const [modal, setModal] = useState<PropsModalContentInteractive>(initialModal)
   const [confirm, setConfirm] = useState(initialConfirm)
-  const [contentInteractiveRegister, setContentInteractiveRegister] = useState<
-    PropsVideoInteractiveRegister[]
-  >([])
+  const [contentInteractiveRegister, setContentInteractiveRegister] =
+    useState<PropsVideoInteractiveRegisterData>(
+      initialContentInteractiveRegister,
+    )
 
   const onOpenConfirm = (statusPaused: StatusPaused | null) => {
     setConfirm({

@@ -69,6 +69,12 @@ export interface PropsVideoInteractiveRegister {
   }
 }
 
+export interface PropsVideoInteractiveRegisterData {
+  file: FileList | null
+  urlVideo: string
+  data: PropsVideoInteractiveRegister[]
+}
+
 export interface PropsModalContentInteractiveFields {
   question: string
   answers: TypeAnswers[]

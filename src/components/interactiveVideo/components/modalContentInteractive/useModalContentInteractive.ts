@@ -212,7 +212,7 @@ export default function useModalContentInteractive() {
     }
 
     setContentInteractiveRegister((oldContentInteractive) => {
-      oldContentInteractive.map((item) => {
+      oldContentInteractive.data.map((item) => {
         if (item.time === modal.data.statusPaused!.time) {
           item.content.question = modal.data.fields.question
           if (item.type === 'quiz') {

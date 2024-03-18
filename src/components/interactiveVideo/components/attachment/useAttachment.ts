@@ -214,7 +214,7 @@ export default function useAttachment() {
 
   const handleOpenModalContent = useCallback(
     (time: number) => {
-      const values = contentInteractiveRegister.find(
+      const values = contentInteractiveRegister.data.find(
         (item) => item.time === time,
       )
       console.log(values)

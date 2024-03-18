@@ -5,12 +5,15 @@ export default function useModalConfirm() {
     useRegisterVideo()
 
   const handleOnSubmit = () => {
-    setContentInteractiveRegister((oldContentInteractive) => {
-      return [
-        ...oldContentInteractive.filter(
-          (item) => item.time !== confirm.statusPaused!.time,
-        ),
-      ]
+    setContentInteractiveRegister((oldContentInteractiveRegister) => {
+      return {
+        ...oldContentInteractiveRegister,
+        data: [
+          ...oldContentInteractiveRegister.data.filter(
+            (item) => item.time !== confirm.statusPaused!.time,
+          ),
+        ],
+      }
     })
 
     onCloseConfirm()
