@@ -8,7 +8,7 @@ interface Props {
   children?: ReactNode
 }
 
-const InteractiveVideo = ({ children }: Props) => {
+const InteractiveVideoProvider = ({ children }: Props) => {
   const { values } = useInteractiveVideoProvider()
 
   return (
@@ -18,4 +18,4 @@ const InteractiveVideo = ({ children }: Props) => {
   )
 }
 
-export default InteractiveVideo
+export default InteractiveVideoProvider

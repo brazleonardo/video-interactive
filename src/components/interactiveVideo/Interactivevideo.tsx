@@ -1,6 +1,4 @@
-import InteractiveVideoContext, {
-  useInteractiveVideo,
-} from '@/contexts/interactiveVideo'
+import { useInteractiveVideo } from '@/contexts/interactiveVideo'
 
 import * as Component from './styled'
 
@@ -22,10 +20,4 @@ function InteractiveVideo() {
   )
 }
 
-const InteractiveVideoComponent = () => (
-  <InteractiveVideoContext>
-    <InteractiveVideo />
-  </InteractiveVideoContext>
-)
-
-export default InteractiveVideoComponent
+export default InteractiveVideo
