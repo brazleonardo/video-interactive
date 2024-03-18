@@ -21,10 +21,22 @@ export const data = [
       question:
         'Sobre o campo elétrico gerado por uma partícula positiva é correto afirmar:',
       answers: [
-        'É semelhante ao campo gravitacional da terra',
-        'É de repulsão',
-        'É de atração',
-        'Não há relação com corrente elétrica',
+        {
+          id: '1',
+          text: 'É semelhante ao campo gravitacional da terra',
+        },
+        {
+          id: '2',
+          text: 'É de repulsão',
+        },
+        {
+          id: '3',
+          text: 'É de atração',
+        },
+        {
+          id: '4',
+          text: 'Não há relação com corrente elétrica',
+        },
       ],
       correctAnswer: 2,
       questionAnswer: null,
@@ -76,7 +88,12 @@ export const data = [
     content: {
       question:
         'Determine a tensão elétrica em um circuito que possui um resistor de 40 Ω  e que apresenta uma potência elétrica de 250 W.',
-      answers: ['90 V', '100 V', '110 V', '120 V'],
+      answers: [
+        { id: '1', text: '90 V' },
+        { id: '2', text: '100 V' },
+        { id: '3', text: '110 V' },
+        { id: '4', text: '120 V' },
+      ],
       correctAnswer: 3,
       questionAnswer: null,
     },
