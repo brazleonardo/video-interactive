@@ -6,7 +6,16 @@ function InteractiveVideo() {
   const { status, contentInteractive, onStart } = useInteractiveVideo()
 
   if (!contentInteractive.urlVideo) {
-    return <></>
+    return (
+      <Component.NotFoundVideo>
+        <Component.Text>
+          Ops! Parece que não existe vídeo cadastrado :(
+        </Component.Text>
+        <Component.Link to="/register">
+          <Component.RiVideoAddFill size={18} /> Cadastre seu vídeo
+        </Component.Link>
+      </Component.NotFoundVideo>
+    )
   }
 
   return (
