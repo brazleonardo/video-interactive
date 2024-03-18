@@ -1,4 +1,6 @@
-import { useState, useCallback, ChangeEvent } from 'react'
+import { useState, useCallback, ChangeEvent, useEffect } from 'react'
+
+import { formatTime } from '@/utils'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
 import { useInteractiveVideo } from '@/contexts/interactiveVideo'
@@ -16,7 +18,7 @@ export default function useRegister() {
     setModal,
   } = useRegisterVideo()
 
-  const { setContentInteractive } = useInteractiveVideo()
+  const { contentInteractive, setContentInteractive } = useInteractiveVideo()
 
   const { file, urlVideo } = contentInteractiveRegister
 
@@ -125,6 +127,31 @@ export default function useRegister() {
       setIsLoadingForm(false)
     }, 2000)
   }
+
+  useEffect(() => {
+    const data: PropsVideoInteractiveRegister[] = []
+
+    contentInteractive.data?.forEach((item) => {
+      data.push({
+        time: item.time,
+        timeFormated: formatTime(item.time, 'auto'),
+        type: item.type,
+        content: {
+          question: item.content.question,
+          answers: item.content.answers,
+          correctAnswer: item.content.correctAnswer,
+        },
+      })
+    })
+
+    setContentInteractiveRegister((oldContentInteractiveRegister) => {
+      return {
+        ...oldContentInteractiveRegister,
+        urlVideo: contentInteractive?.urlVideo ?? '',
+        data,
+      }
+    })
+  }, [contentInteractive, setContentInteractiveRegister])
 
   return {
     isLoadingForm,

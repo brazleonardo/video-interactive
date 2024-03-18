@@ -7,7 +7,6 @@ import useRegister from './useRegister'
 function Register() {
   const {
     urlVideo,
-    file,
     isLoadingForm,
     message,
     statusPaused,
@@ -38,7 +37,7 @@ function Register() {
               url={urlVideo}
               onChange={handleChange}
             />
-            <Component.When is={!!file}>
+            <Component.When is={!!urlVideo}>
               <Component.GroupButton>
                 <Component.When
                   is={
