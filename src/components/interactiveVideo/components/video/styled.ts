@@ -12,7 +12,8 @@ import {
 export { When, Button, Marker, FaPlay, FaPause, VolumeIcon, InteractiveContent }
 
 export const Container = styled.div`
-  width: calc(100vw - 80px);
+  width: 100%;
+  max-width: var(--containerWidth);
   height: 100vh;
   display: flex;
   align-items: center;

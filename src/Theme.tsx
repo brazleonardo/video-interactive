@@ -33,6 +33,11 @@ export const theme = {
 }
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --navbarHeight: 60px;
+    --containerWidth: calc(100vw - 80px);
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -47,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
   html, body, .root {
     width: 100%;
     height: 100%;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   input, textarea {
