@@ -3,7 +3,11 @@ import { useInteractiveVideo } from '@/contexts/interactiveVideo'
 import * as Component from './styled'
 
 function InteractiveVideo() {
-  const { status, onStart } = useInteractiveVideo()
+  const { status, contentInteractive, onStart } = useInteractiveVideo()
+
+  if (!contentInteractive.urlVideo) {
+    return <></>
+  }
 
   return (
     <Component.Container>

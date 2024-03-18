@@ -1,7 +1,11 @@
 import { useState, useCallback, ChangeEvent } from 'react'
 
 import { useRegisterVideo } from '@/contexts/registerVideo'
-import { PropsVideoInteractiveRegister } from '@/types/iteractiveVideo'
+import { useInteractiveVideo } from '@/contexts/interactiveVideo'
+import {
+  PropsVideoInteractiveRegister,
+  PropsContentInteractive,
+} from '@/types/iteractiveVideo'
 import { PropsMessage } from '@/types/message'
 
 export default function useRegister() {
@@ -11,6 +15,8 @@ export default function useRegister() {
     setContentInteractiveRegister,
     setModal,
   } = useRegisterVideo()
+
+  const { setContentInteractive } = useInteractiveVideo()
 
   const { file, urlVideo } = contentInteractiveRegister
 
@@ -82,6 +88,32 @@ export default function useRegister() {
     setTimeout(() => {
       console.log({
         contentInteractiveRegister,
+      })
+
+      const data: PropsContentInteractive[] = []
+
+      contentInteractiveRegister.data.forEach((item) => {
+        data.push({
+          time: item.time,
+          type: item.type,
+          finished: false,
+          status: null,
+          content: {
+            question: item.content.question,
+            answers: item.content?.answers ?? [],
+            questionAnswer: null,
+            correctAnswer: item.content.correctAnswer,
+          },
+        })
+      })
+
+      setContentInteractive((oldContentInteractive) => {
+        return {
+          ...oldContentInteractive,
+          data,
+          urlVideo: contentInteractiveRegister.urlVideo,
+          closeContentInteractive: false,
+        }
       })
 
       setMessage({

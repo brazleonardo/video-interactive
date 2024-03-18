@@ -32,14 +32,15 @@ export interface PropsContentInteractive {
   status: TypeStatusMarker
   content: {
     question: string | null
-    answers: string[] | null
-    questionAnswer: string | number | null
-    correctAnswer: number | null
+    answers: TypeAnswers[] | null
+    questionAnswer: string | null
+    correctAnswer: string | null
   }
 }
 
 export interface PropsContentInteractiveData {
   data: PropsContentInteractive[]
+  urlVideo: string
   current: PropsContentInteractive | null
   closeContentInteractive: boolean
 }

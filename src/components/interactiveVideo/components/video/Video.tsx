@@ -1,6 +1,6 @@
 import * as Component from './styled'
 
-import src from '@/assets/aula.mp4'
+// import src from '@/assets/aula.mp4'
 
 import useVideo from './useVideo'
 
@@ -40,7 +40,7 @@ function Video() {
           onTimeUpdate={onTimeUpdate}
           onVolumeChange={onVolumeChange}
           onEnded={onEnded}
-          src={src}
+          src={contentInteractive.urlVideo}
         />
         <Component.InteractiveContent data={contentInteractive.current} />
         <Component.Controls>

@@ -22,7 +22,7 @@ import bite from '@/assets/bite.mp3'
 import dunDunDun from '@/assets/dun-dun-dun.mp3'
 import fanfare from '@/assets/fanfare.mp3'
 
-import { data } from './data'
+// import { data } from './data'
 
 interface Props {
   isLoadingPage: boolean
@@ -55,19 +55,19 @@ export function useInteractiveVideoProvider() {
 
   const initialContentInteractive = useMemo(
     () => ({
-      data,
+      data: [],
+      urlVideo: '',
       current: null,
       closeContentInteractive: false,
     }),
     [],
-  )
+  ) as PropsContentInteractiveData
 
   const [isLoadingPage, setIsLoadingPage] = useState(true)
   const [isLoadingForm, setIsLoadingForm] = useState(false)
   const [status, setStatus] = useState<TypeStatus>(null)
-  const [contentInteractive, setContentInteractive] = useState(
-    initialContentInteractive as PropsContentInteractiveData,
-  )
+  const [contentInteractive, setContentInteractive] =
+    useState<PropsContentInteractiveData>(initialContentInteractive)
 
   const onStart = useCallback(() => {
     setStatus('start')
@@ -98,12 +98,7 @@ export function useInteractiveVideoProvider() {
           return oldContentInteractive
         }
         if (oldContentInteractive.current?.type) {
-          const questionAnswerValue =
-            oldContentInteractive.current?.type === 'quiz'
-              ? Number(value)
-              : value
-          oldContentInteractive.current.content.questionAnswer =
-            questionAnswerValue
+          oldContentInteractive.current.content.questionAnswer = value
           oldContentInteractive.data = oldContentInteractive.data.map(
             (item) => {
               if (item.time === time) {
@@ -111,7 +106,7 @@ export function useInteractiveVideoProvider() {
                   ...item,
                   content: {
                     ...item.content,
-                    questionAnswer: questionAnswerValue,
+                    questionAnswer: value,
                   },
                 }
               }

@@ -57,10 +57,10 @@ const InteractiveContent = ({ data }: Props) => {
           <Component.GroupAnswers>
             <Component.Question>{data.content.question}</Component.Question>
             <Component.Answers>
-              {data.content.answers?.map((item, index) => (
+              {data.content.answers?.map((item) => (
                 <Component.Answer
-                  key={item}
-                  $isChecked={data.content.questionAnswer === index}
+                  key={item.id}
+                  $isChecked={item.id === data.content.questionAnswer}
                   $finished={data.finished}
                   $isCorrect={
                     data.content.correctAnswer === data.content.questionAnswer
@@ -68,12 +68,12 @@ const InteractiveContent = ({ data }: Props) => {
                 >
                   <Component.Radio
                     name="quiz"
-                    value={index}
-                    checked={data.content.questionAnswer === index}
+                    value={item.id}
+                    checked={data.content.questionAnswer === item.id}
                     onChange={(e) => onChangeResponse(e, data.time)}
                     disabled={data.finished}
                   />
-                  {item}
+                  {item.text}
                 </Component.Answer>
               ))}
             </Component.Answers>
