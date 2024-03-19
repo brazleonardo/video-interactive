@@ -18,11 +18,12 @@ export function useThemeProvider() {
   const [fullscreen, setFullscreen] = useState(false)
 
   const onToggleFullscreen = () => {
+    fscreen.requestFullscreen(document.documentElement)
+
     setFullscreen((oldFullscreen) => {
       if (oldFullscreen) {
         fscreen.exitFullscreen()
       }
-      fscreen.requestFullscreen(document.documentElement)
 
       return !oldFullscreen
     })
