@@ -26,9 +26,11 @@ function colorRadioQuiz({ ...props }) {
   return props.theme.colors.quizCheck
 }
 
-export const Container = styled.article`
+export const Container = styled.article.attrs({
+  className: 'intereactive--content',
+})`
   width: 40%;
-  height: calc(70vh - 50px);
+  height: 70vh;
   background-color: #fff;
   border: 10px solid #000;
   padding: 15px;

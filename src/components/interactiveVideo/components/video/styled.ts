@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import { FaPlay, FaPause } from 'react-icons/fa6'
+import { RiFullscreenFill } from 'react-icons/ri'
+import { RxExitFullScreen } from 'react-icons/rx'
 
 import When from '@/components/when'
 import Button from '@/components/ui/button'
@@ -9,9 +11,19 @@ import {
   InteractiveContent,
 } from '@/components/interactiveVideo'
 
-export { When, Button, Marker, FaPlay, FaPause, VolumeIcon, InteractiveContent }
+export {
+  When,
+  Button,
+  Marker,
+  FaPlay,
+  FaPause,
+  VolumeIcon,
+  RiFullscreenFill,
+  RxExitFullScreen,
+  InteractiveContent,
+}
 
-export const Container = styled.div`
+export const Container = styled.div.attrs({ className: 'video--classroom' })`
   width: 100%;
   max-width: var(--containerWidth);
   height: 100vh;
@@ -21,7 +33,9 @@ export const Container = styled.div`
   margin: auto;
 `
 
-export const Wrap = styled.div<{ $hasInteractive: boolean }>`
+export const Wrap = styled.div.attrs({ className: 'wrap--video-classroom' })<{
+  $hasInteractive: boolean
+}>`
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -30,7 +44,7 @@ export const Wrap = styled.div<{ $hasInteractive: boolean }>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 60px;
 
   video {
     width: ${(props) => (props.$hasInteractive ? '60%' : '100%')};

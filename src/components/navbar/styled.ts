@@ -11,7 +11,7 @@ interface PropsLink {
   $actived?: boolean
 }
 
-export const Container = styled.div`
+export const Container = styled.nav`
   width: 100%;
   height: var(--navbarHeight);
   background-color: ${(props) => props.theme.colors.primary};

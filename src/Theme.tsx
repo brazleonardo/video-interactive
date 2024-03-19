@@ -65,6 +65,25 @@ const GlobalStyle = createGlobalStyle`
       box-shadow: inset 0 0 10px rgba(30, 30, 30, 0.7);
     }
   }
+
+  .main {
+    &.main--fullscreen {
+      nav {
+        display: none;
+      }
+      .video--classroom {
+        max-width: 100%;
+
+        video {
+          height: calc(100vh - 60px);
+        }
+
+        article {
+          height: calc(100vh - 60px);
+        }
+      }
+    }
+  }
 `
 
 type Props = {

@@ -11,6 +11,8 @@ function Video() {
     sliderVolumeRef,
     player,
     contentInteractive,
+    fullscreen,
+    onToggleFullscreen,
     onLoadedMetadata,
     onTimeUpdate,
     onVolumeChange,
@@ -52,6 +54,19 @@ function Video() {
               <Component.FaPause />
             </Component.When>
           </Component.ButtonIcon>
+          <Component.WrapVolume>
+            <Component.ButtonIcon>
+              <Component.VolumeIcon value={player.volume} />
+            </Component.ButtonIcon>
+            <Component.Slider
+              ref={sliderVolumeRef}
+              min={0}
+              max={1}
+              value={player.volume}
+              step={0.25}
+              onChange={handleChangeVolume}
+            />
+          </Component.WrapVolume>
           <Component.Time>
             {player.currentTime} / {player.duration}
           </Component.Time>
@@ -73,19 +88,14 @@ function Video() {
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>
-          <Component.WrapVolume>
-            <Component.ButtonIcon>
-              <Component.VolumeIcon value={player.volume} />
-            </Component.ButtonIcon>
-            <Component.Slider
-              ref={sliderVolumeRef}
-              min={0}
-              max={1}
-              value={player.volume}
-              step={0.25}
-              onChange={handleChangeVolume}
-            />
-          </Component.WrapVolume>
+          <Component.ButtonIcon onClick={onToggleFullscreen}>
+            <Component.When is={!fullscreen}>
+              <Component.RiFullscreenFill />
+            </Component.When>
+            <Component.When is={fullscreen}>
+              <Component.RxExitFullScreen />
+            </Component.When>
+          </Component.ButtonIcon>
         </Component.Controls>
       </Component.Wrap>
     </Component.Container>
