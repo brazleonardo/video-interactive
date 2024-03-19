@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 import { Outlet } from 'react-router-dom'
 
+import InteractiveVideoProvider from '@/contexts/interactiveVideo'
+import Theme from '@/Theme'
+
 import Navbar from '@/components/navbar'
 
-export { Outlet, Navbar }
+export { Outlet, InteractiveVideoProvider, Theme, Navbar }
 
 export const Container = styled.div`
   width: 100%;

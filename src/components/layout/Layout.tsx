@@ -2,9 +2,11 @@ import * as Component from './styled'
 
 export default function Layout() {
   return (
-    <>
-      <Component.Navbar />
-      <Component.Outlet />
-    </>
+    <Component.Theme>
+      <Component.InteractiveVideoProvider>
+        <Component.Navbar />
+        <Component.Outlet />
+      </Component.InteractiveVideoProvider>
+    </Component.Theme>
   )
 }
