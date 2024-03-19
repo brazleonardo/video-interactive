@@ -81,8 +81,8 @@ export default function Video() {
               <Component.MarkerSlider
                 key={item.time}
                 duration={player.duration}
-                visibleTimeOfMarked={visibleTimeOfMarked}
                 left={onMarkerBar(item.time)}
+                $visibleTimeOfMarked={visibleTimeOfMarked}
               >
                 <Component.Marker type={item.type} status={item.status} />
               </Component.MarkerSlider>

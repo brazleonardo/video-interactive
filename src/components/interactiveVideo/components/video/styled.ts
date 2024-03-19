@@ -27,13 +27,13 @@ interface PropsWrap {
 
 interface PropsMarkerSlider {
   duration: number
-  visibleTimeOfMarked: number
   left: string
+  $visibleTimeOfMarked: number
 }
 
 function calcWidthMarker({ ...props }) {
   return (
-    (Number(props.left) + props.visibleTimeOfMarked - Number(props.left)) *
+    (Number(props.left) + props.$visibleTimeOfMarked - Number(props.left)) *
     (100 / props.duration)
   )
 }
