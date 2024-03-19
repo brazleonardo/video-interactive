@@ -11,14 +11,12 @@ import { theme } from '@/Theme'
 import { convertTimeToSeconds, formatTime } from '@/utils'
 
 import { useInteractiveVideo } from '@/contexts/interactiveVideo'
-import { useTheme } from '@/contexts/theme'
 
 import { PropsPlayer, PropsContentInteractive } from '@/types/iteractiveVideo'
 
 export default function useVideo() {
   const { contentInteractive, setContentInteractive, onEnd } =
     useInteractiveVideo()
-  const { fullscreen, onToggleFullscreen } = useTheme()
 
   const initialPlayer = useMemo(
     () => ({
@@ -253,8 +251,6 @@ export default function useVideo() {
     sliderVolumeRef,
     player,
     contentInteractive,
-    fullscreen,
-    onToggleFullscreen,
     onLoadedMetadata,
     onTimeUpdate,
     onVolumeChange,

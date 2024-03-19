@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { FaPlay, FaPause } from 'react-icons/fa6'
-import { RiFullscreenFill } from 'react-icons/ri'
-import { RxExitFullScreen } from 'react-icons/rx'
 
 import When from '@/components/when'
 import Button from '@/components/ui/button'
@@ -9,6 +7,7 @@ import {
   Marker,
   VolumeIcon,
   InteractiveContent,
+  ButtonFullscreen,
 } from '@/components/interactiveVideo'
 
 export {
@@ -18,9 +17,8 @@ export {
   FaPlay,
   FaPause,
   VolumeIcon,
-  RiFullscreenFill,
-  RxExitFullScreen,
   InteractiveContent,
+  ButtonFullscreen,
 }
 
 export const Container = styled.div.attrs({ className: 'video--classroom' })`

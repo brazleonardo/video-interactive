@@ -1,7 +1,5 @@
 import * as Component from './styled'
 
-// import src from '@/assets/aula.mp4'
-
 import useVideo from './useVideo'
 
 function Video() {
@@ -11,8 +9,6 @@ function Video() {
     sliderVolumeRef,
     player,
     contentInteractive,
-    fullscreen,
-    onToggleFullscreen,
     onLoadedMetadata,
     onTimeUpdate,
     onVolumeChange,
@@ -88,14 +84,7 @@ function Video() {
               </Component.MarkerSlider>
             ))}
           </Component.WrapSlider>
-          <Component.ButtonIcon onClick={onToggleFullscreen}>
-            <Component.When is={!fullscreen}>
-              <Component.RiFullscreenFill />
-            </Component.When>
-            <Component.When is={fullscreen}>
-              <Component.RxExitFullScreen />
-            </Component.When>
-          </Component.ButtonIcon>
+          <Component.ButtonFullscreen />
         </Component.Controls>
       </Component.Wrap>
     </Component.Container>

@@ -1,6 +1,7 @@
 export { default } from './Interactivevideo'
 export { default as Attachment } from './components/attachment'
 export { default as Video } from './components/video'
+export { default as ButtonFullscreen } from './components/buttonFullscreen'
 export { default as InteractiveContent } from './components/interactiveContent'
 export { default as Marker } from './components/marker'
 export { default as VolumeIcon } from './components/volumeIcon'
