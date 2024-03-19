@@ -17,6 +17,7 @@ export const Container = styled.nav`
   background-color: ${(props) => props.theme.colors.primary};
   position: fixed;
   display: flex;
+  z-index: 100;
 `
 
 export const Inner = styled.div`

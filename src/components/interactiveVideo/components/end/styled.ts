@@ -11,6 +11,7 @@ import { GiPodium } from 'react-icons/gi'
 
 import When from '@/components/when'
 import Button from '@/components/ui/button'
+import { ButtonFullscreen } from '@/components/interactiveVideo'
 
 export {
   When,
@@ -21,6 +22,7 @@ export {
   FaRegCommentAlt,
   FaQuestion,
   GiPodium,
+  ButtonFullscreen,
 }
 
 export const Container = styled.div<{ average: number }>`
@@ -103,4 +105,18 @@ export const WrapIcon = styled.h3`
   justify-content: center;
   border-radius: 50%;
   font-size: 3.1rem;
+`
+
+export const WrapButtonFullscreen = styled.div`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  button {
+    color: ${(props) => props.theme.colors.textSecondaryContrast};
+
+    &:hover {
+      color: ${(props) => props.theme.colors.textPrimaryContrast};
+    }
+  }
 `

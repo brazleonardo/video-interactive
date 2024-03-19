@@ -15,6 +15,9 @@ const Start = ({ onStart }: Props) => (
       </Component.Text>
     </Component.Box>
     <Component.Button onClick={onStart}>Iniciar</Component.Button>
+    <Component.WrapButtonFullscreen>
+      <Component.ButtonFullscreen />
+    </Component.WrapButtonFullscreen>
   </Component.Container>
 )
 

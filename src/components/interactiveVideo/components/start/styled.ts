@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 import Button from '@/components/ui/button'
+import { ButtonFullscreen } from '@/components/interactiveVideo'
 
-export { Button }
+export { Button, ButtonFullscreen }
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  position: relative;
   background-color: ${(props) => props.theme.colors.secondary};
   display: flex;
   flex-direction: column;
@@ -28,4 +30,18 @@ export const Box = styled.div`
 export const Text = styled.p`
   font-size: ${(props) => props.theme.fontSizes.medium};
   color: ${(props) => props.theme.colors.textSecondaryContrast};
+`
+
+export const WrapButtonFullscreen = styled.div`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  button {
+    color: ${(props) => props.theme.colors.textSecondaryContrast};
+
+    &:hover {
+      color: ${(props) => props.theme.colors.textPrimaryContrast};
+    }
+  }
 `

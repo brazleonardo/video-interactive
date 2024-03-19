@@ -105,6 +105,9 @@ const End = () => {
         </Component.When>
       </Component.Cards>
       <Component.Button onClick={onStart}>Iniciar o Vídeo</Component.Button>
+      <Component.WrapButtonFullscreen>
+        <Component.ButtonFullscreen />
+      </Component.WrapButtonFullscreen>
     </Component.Container>
   )
 }
