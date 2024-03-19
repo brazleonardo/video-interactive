@@ -31,7 +31,7 @@ export const Wrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-bottom: 60px;
+  padding-bottom: var(--navbarVideoHeight);
 
   video {
     width: 100%;
@@ -45,7 +45,7 @@ export const Video = styled.video`
 
 export const Controls = styled.div`
   width: 100%;
-  height: 60px;
+  height: var(--navbarVideoHeight);
   display: flex;
   align-items: center;
   justify-content: space-between;
