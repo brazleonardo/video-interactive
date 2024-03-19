@@ -49,12 +49,13 @@ const Attachment = ({ src }: Props) => {
             </Component.When>
           </Component.ButtonIcon>
           <Component.Time>
-            {player.currentTime} / {player.duration}
+            {player.currentTime} / {player.durationFormated}
           </Component.Time>
           <Component.WrapSlider ref={sliderRef}>
             <Component.Slider
               min="0"
               max="100"
+              step={0.5}
               value={player.progress}
               onChange={handleChangeProgress}
             />

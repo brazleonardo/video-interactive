@@ -2,13 +2,14 @@ import * as Component from './styled'
 
 import useVideo from './useVideo'
 
-function Video() {
+export default function Video() {
   const {
     videoRef,
     sliderRef,
     sliderVolumeRef,
     player,
     contentInteractive,
+    visibleTimeOfMarked,
     onLoadedMetadata,
     onTimeUpdate,
     onVolumeChange,
@@ -64,13 +65,14 @@ function Video() {
             />
           </Component.WrapVolume>
           <Component.Time>
-            {player.currentTime} / {player.duration}
+            {player.currentTime} / {player.durationFormated}
           </Component.Time>
           <Component.WrapSlider ref={sliderRef}>
             <Component.When is={!videoRef.current?.paused}>
               <Component.Slider
                 min="0"
                 max="100"
+                step={0.5}
                 value={player.progress}
                 onChange={handleChangeProgress}
               />
@@ -78,6 +80,8 @@ function Video() {
             {contentInteractive.data?.map((item) => (
               <Component.MarkerSlider
                 key={item.time}
+                duration={player.duration}
+                visibleTimeOfMarked={visibleTimeOfMarked}
                 left={onMarkerBar(item.time)}
               >
                 <Component.Marker type={item.type} status={item.status} />
@@ -90,5 +94,3 @@ function Video() {
     </Component.Container>
   )
 }
-
-export default Video

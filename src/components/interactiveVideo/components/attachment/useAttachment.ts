@@ -26,12 +26,12 @@ export default function useAttachment() {
     () => ({
       isPlaying: false,
       currentTime: '00:00',
-      duration: '00:00',
+      duration: 0,
+      durationFormated: '00:00',
       progress: 0,
       visualizedTime: 0,
       isMuted: false,
       volume: 1,
-      fullscreen: false,
     }),
     [],
   )
@@ -63,7 +63,8 @@ export default function useAttachment() {
         return {
           ...oldPlayer,
           ...{
-            duration: formatTime(Math.round(duration), 'auto'),
+            duration,
+            durationFormated: formatTime(Math.round(duration), 'auto'),
             visualizedTime: 0,
             currentTime: formatTime(timeCurrent, 'auto'),
             isMuted: false,

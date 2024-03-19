@@ -21,6 +21,23 @@ export {
   ButtonFullscreen,
 }
 
+interface PropsWrap {
+  $hasInteractive: boolean
+}
+
+interface PropsMarkerSlider {
+  duration: number
+  visibleTimeOfMarked: number
+  left: string
+}
+
+function calcWidthMarker({ ...props }) {
+  return (
+    (Number(props.left) + props.visibleTimeOfMarked - Number(props.left)) *
+    (100 / props.duration)
+  )
+}
+
 export const Container = styled.div.attrs({ className: 'video--classroom' })`
   width: 100%;
   max-width: var(--containerWidth);
@@ -31,9 +48,9 @@ export const Container = styled.div.attrs({ className: 'video--classroom' })`
   margin: auto;
 `
 
-export const Wrap = styled.div.attrs({ className: 'wrap--video-classroom' })<{
-  $hasInteractive: boolean
-}>`
+export const Wrap = styled.div.attrs({
+  className: 'wrap--video-classroom',
+})<PropsWrap>`
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -167,8 +184,8 @@ export const Time = styled.span`
   display: block;
 `
 
-export const MarkerSlider = styled.div<{ left: string }>`
-  width: 2.7%;
+export const MarkerSlider = styled.div<PropsMarkerSlider>`
+  width: ${(props) => calcWidthMarker(props)}%;
   height: 8px;
   background-color: #db5b30;
   position: absolute;

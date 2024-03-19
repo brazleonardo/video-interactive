@@ -22,17 +22,18 @@ export default function useVideo() {
     () => ({
       isPlaying: false,
       currentTime: '00:00',
-      duration: '00:00',
+      duration: 0,
+      durationFormated: '00:00',
       progress: 0,
       visualizedTime: 0,
       isMuted: false,
       volume: 1,
-      fullscreen: false,
     }),
     [],
   )
 
   const time = '00:00'
+  const visibleTimeOfMarked = 15
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const sliderRef = useRef<HTMLInputElement>(null)
@@ -57,7 +58,8 @@ export default function useVideo() {
         return {
           ...oldPlayer,
           ...{
-            duration: formatTime(Math.round(duration), 'auto'),
+            duration,
+            durationFormated: formatTime(Math.round(duration), 'auto'),
             visualizedTime: 0,
             currentTime: time,
             isMuted: false,
@@ -73,7 +75,7 @@ export default function useVideo() {
 
   const compareTimeCurrent = useCallback(
     (timeCurrent: number, time: number) =>
-      timeCurrent >= time && timeCurrent <= time + 15,
+      timeCurrent >= time && timeCurrent <= time + visibleTimeOfMarked,
     [],
   )
 
@@ -251,6 +253,7 @@ export default function useVideo() {
     sliderVolumeRef,
     player,
     contentInteractive,
+    visibleTimeOfMarked,
     onLoadedMetadata,
     onTimeUpdate,
     onVolumeChange,

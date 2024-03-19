@@ -17,12 +17,12 @@ export type TypeAnswers = {
 export interface PropsPlayer {
   isPlaying: boolean
   currentTime: string
-  duration: string
+  duration: number
+  durationFormated: string
   progress: number
   visualizedTime: number
   isMuted: boolean
   volume: number
-  fullscreen: boolean
 }
 
 export interface PropsContentInteractive {
