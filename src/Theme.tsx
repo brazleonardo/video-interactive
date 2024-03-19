@@ -35,6 +35,7 @@ export const theme = {
 const GlobalStyle = createGlobalStyle`
   :root {
     --navbarHeight: 60px;
+    --navbarVideoHeight: 60px;
     --containerWidth: calc(100vw - 80px);
   }
 
@@ -75,11 +76,11 @@ const GlobalStyle = createGlobalStyle`
         max-width: 100%;
 
         video {
-          height: calc(100vh - 60px);
+          height: calc(100vh - var(--navbarVideoHeight));
         }
 
         article {
-          height: calc(100vh - 60px);
+          height: calc(100vh - var(--navbarVideoHeight));
         }
       }
     }
