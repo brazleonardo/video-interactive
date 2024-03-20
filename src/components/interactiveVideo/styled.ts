@@ -71,6 +71,7 @@ export const TextNotSupported = styled.h2`
   display: none;
 
   @media (orientation: portrait) {
+    width: 100%;
     font-size: 1.3rem;
     line-height: 1.3;
     color: ${(props) => props.theme.colors.textPrimaryContrast};
