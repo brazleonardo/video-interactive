@@ -22,8 +22,6 @@ import bite from '@/assets/bite.mp3'
 import dunDunDun from '@/assets/dun-dun-dun.mp3'
 import fanfare from '@/assets/fanfare.mp3'
 
-// import { data } from './data'
-
 interface Props {
   isLoadingPage: boolean
   isLoadingForm: boolean
