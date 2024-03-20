@@ -5,7 +5,9 @@ import { ButtonFullscreen } from '@/components/interactiveVideo'
 
 export { Button, ButtonFullscreen }
 
-export const Container = styled.div`
+export const Container = styled.div.attrs({
+  className: 'container--start-video',
+})`
   width: 100%;
   min-height: calc(100vh - var(--navbarHeight));
   position: relative;

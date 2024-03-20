@@ -8,7 +8,7 @@ export const Button = styled.button<PropsButton>`
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
   height: ${(props) => sizeButton(props.size)}px;
   padding: 20px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: ${(props) => props.theme.colors.textPrimaryContrast};
   background-color: ${(props) => props.theme.colors.primary};
@@ -20,6 +20,10 @@ export const Button = styled.button<PropsButton>`
   justify-content: center;
   gap: 10px;
   transition: all 0.3s ease-in-out;
+
+  @media (max-width: 991px) {
+    font-size: 0.8rem;
+  }
 
   &:not(:disabled):hover {
     background-color: ${(props) => darken(props.theme.colors.primary, 20)};

@@ -41,7 +41,7 @@ function calcWidthMarker({ ...props }) {
 export const Container = styled.div.attrs({ className: 'video--classroom' })`
   width: 100%;
   max-width: var(--containerWidth);
-  height: 100vh;
+  height: calc(100vh - var(--navbarHeight));
   display: flex;
   align-items: center;
   justify-content: center;

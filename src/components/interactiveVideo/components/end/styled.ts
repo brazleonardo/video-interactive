@@ -25,7 +25,13 @@ export {
   ButtonFullscreen,
 }
 
-export const Container = styled.div<{ average: number }>`
+interface PropsContainer {
+  average: number
+}
+
+export const Container = styled.div.attrs({
+  className: 'container--end-video',
+})<PropsContainer>`
   width: 100%;
   min-height: calc(100vh - var(--navbarHeight));
   background-color: ${(props) =>

@@ -69,11 +69,21 @@ const GlobalStyle = createGlobalStyle`
 
   .main {
     &.main--fullscreen {
+      padding-top: 0;
+      height: 100vh;
+
       nav {
         display: none;
       }
+
+      .container--start-video,
+      .container--end-video {
+        height: 100vh;
+      }
+
       .video--classroom {
         max-width: 100%;
+        height: 100vh;
 
         video {
           height: calc(100vh - var(--navbarVideoHeight));

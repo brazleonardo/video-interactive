@@ -46,12 +46,16 @@ export const Content = styled.div`
 `
 
 export const Question = styled.h3`
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   font-family: ${(props) => props.theme.fonts[0]};
   line-height: 1.3;
   color: #000;
   margin-bottom: 30px;
+
+  @media (max-width: 991px) {
+    font-size: 1rem;
+  }
 `
 
 export const GroupAnswers = styled.div`
@@ -74,10 +78,14 @@ export const Answer = styled.label<PropsAnswer>`
   border-radius: 8px;
   background-color: ${(props) => colorRadioQuiz(props)};
   color: #000;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   font-family: ${(props) => props.theme.fonts[0]};
   cursor: ${(props) => (props.$finished ? 'default' : 'pointer')};
+
+  @media (max-width: 991px) {
+    font-size: 1rem;
+  }
 `
 
 export const Radio = styled.input.attrs({ type: 'radio' })`
@@ -98,6 +106,11 @@ export const Comment = styled.textarea.attrs({ rows: 10, cols: 10 })`
   display: flex;
   align-items: flex-start;
   padding: 10px;
+
+  @media (max-width: 991px) {
+    min-height: 40px;
+    max-height: 80px;
+  }
 `
 
 export const GroupBtn = styled.div`
