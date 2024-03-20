@@ -29,6 +29,9 @@ function InteractiveVideo() {
       <Component.When is={status === 'end'}>
         <Component.End />
       </Component.When>
+      <Component.TextNotSupported>
+        Você pode visualizar melhor com o aparelho virado.
+      </Component.TextNotSupported>
     </Component.Container>
   )
 }

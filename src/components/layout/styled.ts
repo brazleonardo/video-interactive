@@ -13,5 +13,6 @@ export const Main = styled.div.attrs<PropsMain>((props) => ({
   className: props.$fullscreen ? 'main main--fullscreen' : 'main',
 }))`
   width: 100%;
-  height: auto;
+  min-height: calc(100vh - var(--navbarHeight));
+  padding-top: var(--navbarHeight);
 `

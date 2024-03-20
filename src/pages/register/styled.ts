@@ -21,7 +21,7 @@ export {
 export const Container = styled.div`
   width: 100%;
   max-width: 1300px;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbarHeight));
   display: flex;
   flex-direction: column;
   align-items: center;

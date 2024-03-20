@@ -6,5 +6,5 @@ export { InteractiveVideo }
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100vh - var(--navbarHeight));
+  min-height: calc(100vh - var(--navbarHeight));
 `

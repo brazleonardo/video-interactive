@@ -7,7 +7,7 @@ export { Button, ButtonFullscreen }
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - var(--navbarHeight));
   position: relative;
   background-color: ${(props) => props.theme.colors.secondary};
   display: flex;

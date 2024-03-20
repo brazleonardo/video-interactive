@@ -14,16 +14,31 @@ export { Link, RiVideoAddFill, When, Start, End, Video }
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - var(--navbarHeight));
+  position: relative;
+
+  @media (orientation: portrait) {
+    &:before {
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 40;
+    }
+  }
 `
 
 export const NotFoundVideo = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - var(--navbarHeight));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 15px;
 
   a {
     font-size: 0.9rem;
@@ -46,6 +61,25 @@ export const NotFoundVideo = styled.div`
 
 export const Text = styled.h2`
   font-size: 1.3rem;
+  line-height: 1.3;
   color: ${(props) => props.theme.colors.primary};
   margin-bottom: 30px;
+  text-align: center;
+`
+
+export const TextNotSupported = styled.h2`
+  display: none;
+
+  @media (orientation: portrait) {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: ${(props) => props.theme.colors.textPrimaryContrast};
+    text-align: center;
+    display: block;
+    padding: 0 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 41;
+  }
 `

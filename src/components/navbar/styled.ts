@@ -17,6 +17,7 @@ export const Container = styled.nav`
   height: var(--navbarHeight);
   background-color: ${(props) => props.theme.colors.primary};
   position: fixed;
+  top: 0;
   display: flex;
   z-index: 100;
 `
@@ -28,6 +29,10 @@ export const Inner = styled.div`
   display: flex;
   align-items: center;
   margin: auto;
+
+  @media (max-width: 540px) {
+    max-width: calc(100% - 30px);
+  }
 `
 
 export const ItemLink = styled(Link)<PropsLink>`
@@ -42,6 +47,11 @@ export const ItemLink = styled(Link)<PropsLink>`
   gap: 0.5rem;
   padding: 0 1.5rem;
   transition: all 0.4s ease-in-out;
+
+  @media (max-width: 460px) {
+    font-size: 0.8rem;
+    padding: 0 1rem;
+  }
 
   &[aria-disabled='true'] {
     cursor: default;

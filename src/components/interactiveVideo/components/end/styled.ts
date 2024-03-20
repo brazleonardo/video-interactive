@@ -27,7 +27,7 @@ export {
 
 export const Container = styled.div<{ average: number }>`
   width: 100%;
-  height: 100vh;
+  min-height: calc(100vh - var(--navbarHeight));
   background-color: ${(props) =>
     props.average >= 80
       ? props.theme.colors.bgEndApproved
