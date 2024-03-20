@@ -176,7 +176,7 @@ export const Slider = styled.input.attrs({ type: 'range' })`
 `
 
 export const Time = styled.span`
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: bold;
   line-height: 1;
   color: #fff;

@@ -24,7 +24,7 @@ export const theme = {
     bgEndApproved: '#AFDBD2',
     bgEndNotApproved: '#dbb6af',
   },
-  fonts: ['Roboto', 'sans-serif'],
+  fonts: [`"Roboto", sans-serif`],
   fontSizes: {
     small: '1em',
     medium: '2em',
