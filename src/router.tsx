@@ -2,7 +2,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Navigate,
 } from 'react-router-dom'
 
 import Layout from '@/components/layout'
@@ -14,7 +13,6 @@ const Router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="register" element={<Register />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
     </Route>,
   ),
 )
