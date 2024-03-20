@@ -7,6 +7,9 @@ export default function Navbar() {
   return (
     <Component.Container>
       <Component.Inner>
+        <Component.ItemLink to="/" aria-disabled={pathname === '/'}>
+          <Component.MdOutlineOndemandVideo size={32} />
+        </Component.ItemLink>
         <Component.ItemLink
           to="/"
           $actived={pathname === '/'}

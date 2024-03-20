@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { MdOutlineOndemandVideo } from 'react-icons/md'
 import { FaHome } from 'react-icons/fa'
 import { RiVideoAddFill } from 'react-icons/ri'
 
 import { darken } from '@/utils'
 
-export { FaHome, RiVideoAddFill }
+export { MdOutlineOndemandVideo, FaHome, RiVideoAddFill }
 
 interface PropsLink {
   $actived?: boolean
