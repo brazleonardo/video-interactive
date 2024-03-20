@@ -8,7 +8,8 @@ const Start = ({ onStart }: Props) => (
   <Component.Container>
     <Component.Box>
       <Component.Text>
-        Torne sua aprendizagem mais simples com vídeo interativo e exclusivo.
+        Deixe sua aprendizagem mais simples com vídeo interativo e uma forma
+        diferente de assistir seus vídeos.
       </Component.Text>
       <Component.Text>
         Você só tem que ir interagindo com o conteúdo do vídeo.
