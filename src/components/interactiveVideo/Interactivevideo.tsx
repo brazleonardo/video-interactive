@@ -1,5 +1,7 @@
 import { useInteractiveVideo } from '@/contexts/interactiveVideo'
 
+import router from '@/constants/route'
+
 import * as Component from './styled'
 
 function InteractiveVideo() {
@@ -11,7 +13,7 @@ function InteractiveVideo() {
         <Component.Text>
           Ops! Parece que não existe vídeo cadastrado :(
         </Component.Text>
-        <Component.Link to="/register">
+        <Component.Link to={router.register}>
           <Component.RiVideoAddFill size={18} /> Cadastre seu vídeo
         </Component.Link>
       </Component.NotFoundVideo>
