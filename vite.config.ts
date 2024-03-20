@@ -7,5 +7,4 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
   },
-  base: '/video-interactive/',
 })
