@@ -7,8 +7,8 @@ import { PropsButton } from './interface'
 export const Button = styled.button<PropsButton>`
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
   height: ${(props) => sizeButton(props.size)}px;
-  padding: 20px;
-  font-size: 1rem;
+  padding: 1.3rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: ${(props) => props.theme.colors.textPrimaryContrast};
   background-color: ${(props) => props.theme.colors.primary};
@@ -23,6 +23,7 @@ export const Button = styled.button<PropsButton>`
 
   @media (max-width: 991px) {
     font-size: 0.8rem;
+    padding: 1rem;
   }
 
   &:not(:disabled):hover {

@@ -35,6 +35,10 @@ export const Container = styled.div.attrs({
   color: ${(props) => colorStatus(props)};
   border-radius: 4px;
   font-size: 2rem;
+
+  @media (max-width: 991px) {
+    font-size: 1.1rem;
+  }
 `
 
 export const Info = styled.div``
@@ -42,6 +46,10 @@ export const Info = styled.div``
 export const Title = styled.span`
   display: block;
   font-size: 1.2rem;
+
+  @media (max-width: 991px) {
+    font-size: 0.8rem;
+  }
 `
 
 export const Text = styled.span`
