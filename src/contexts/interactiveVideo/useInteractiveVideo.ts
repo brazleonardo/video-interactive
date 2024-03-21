@@ -18,6 +18,10 @@ import {
   PropsContentInteractive,
 } from '@/types/iteractiveVideo'
 
+import data from './data'
+
+import urlVideo from '@/assets/aula.mp4'
+
 import bite from '@/assets/bite.mp3'
 import dunDunDun from '@/assets/dun-dun-dun.mp3'
 import fanfare from '@/assets/fanfare.mp3'
@@ -54,8 +58,8 @@ export function useInteractiveVideoProvider() {
 
   const initialContentInteractive = useMemo(
     () => ({
-      data: [],
-      urlVideo: '',
+      data,
+      urlVideo,
       current: null,
       closeContentInteractive: false,
     }),

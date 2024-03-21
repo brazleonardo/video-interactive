@@ -11,7 +11,7 @@ export const Container = styled.div.attrs({
   width: 100%;
   min-height: calc(100vh - var(--navbarHeight));
   position: relative;
-  background-color: ${(props) => props.theme.colors.secondary};
+  background-color: ${(props) => props.theme.colors.startScreen};
   display: flex;
   flex-direction: column;
   align-items: center;

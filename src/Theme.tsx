@@ -7,6 +7,7 @@ export const theme = {
     primary: '#333333',
     secondary: '#AFDBD2',
     primaryBtn: '#111111',
+    startScreen: '#98ccf7',
     viewedBtn: '#e0bf05',
     successBtn: '#06b45d',
     errorBtn: '#db1717',
