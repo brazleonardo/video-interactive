@@ -29,6 +29,7 @@ interface Props {
   contentInteractive: PropsContentInteractiveData
   onStart(): void
   onEnd(): void
+  onResetStatus(): void
   setContentInteractive: Dispatch<SetStateAction<PropsContentInteractiveData>>
   onChangeResponse(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -74,6 +75,10 @@ export function useInteractiveVideoProvider() {
 
   const onEnd = () => {
     setStatus('end')
+  }
+
+  const onResetStatus = () => {
+    setStatus(null)
   }
 
   const onChangeResponse = useCallback(
@@ -245,6 +250,7 @@ export function useInteractiveVideoProvider() {
       contentInteractive,
       onStart,
       onEnd,
+      onResetStatus,
       setContentInteractive,
       onChangeResponse,
       onSubmit,

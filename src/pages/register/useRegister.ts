@@ -18,7 +18,8 @@ export default function useRegister() {
     setModal,
   } = useRegisterVideo()
 
-  const { contentInteractive, setContentInteractive } = useInteractiveVideo()
+  const { contentInteractive, setContentInteractive, onResetStatus } =
+    useInteractiveVideo()
 
   const { file, urlVideo } = contentInteractiveRegister
 
@@ -121,6 +122,8 @@ export default function useRegister() {
           closeContentInteractive: false,
         }
       })
+
+      onResetStatus()
 
       setMessage({
         open: true,

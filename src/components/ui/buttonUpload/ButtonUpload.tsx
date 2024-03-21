@@ -17,7 +17,6 @@ const ButtonUpload = ({ label, url, file, accept, onChange }: Props) => (
         <Component.MdOutlineCloudUpload size={30} />
         {label}
         <Component.InputFile
-          name="upload-file"
           onChange={onChange}
           alt=""
           title=""
