@@ -1,4 +1,4 @@
-export const data = [
+export default [
   {
     time: 50,
     type: 'info',

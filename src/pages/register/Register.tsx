@@ -7,6 +7,7 @@ import useRegister from './useRegister'
 function Register() {
   const {
     urlVideo,
+    file,
     isLoadingForm,
     message,
     statusPaused,
@@ -35,6 +36,7 @@ function Register() {
               accept=".mp4"
               label="Anexar o vídeo"
               url={urlVideo}
+              file={file}
               onChange={handleChange}
             />
             <Component.When is={!!urlVideo}>

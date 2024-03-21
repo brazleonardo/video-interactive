@@ -57,7 +57,7 @@ const Attachment = ({ src }: Props) => {
               min="0"
               max="100"
               step={0.5}
-              value={player.progress}
+              value={String(player.progress)}
               onChange={handleChangeProgress}
             />
             {contentInteractiveRegister.data?.map((item) => (

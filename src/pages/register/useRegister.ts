@@ -32,12 +32,16 @@ export default function useRegister() {
   const handleChange = useCallback(
     ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
       const file = files![0]
+
+      if (!file) return
+
       const url = URL.createObjectURL(file)
 
       setContentInteractiveRegister((oldContentInteractiveRegister) => ({
         ...oldContentInteractiveRegister,
         file: files,
         urlVideo: url,
+        data: [],
       }))
     },
     [setContentInteractiveRegister],
@@ -148,6 +152,7 @@ export default function useRegister() {
       return {
         ...oldContentInteractiveRegister,
         urlVideo: contentInteractive?.urlVideo ?? '',
+        file: null,
         data,
       }
     })

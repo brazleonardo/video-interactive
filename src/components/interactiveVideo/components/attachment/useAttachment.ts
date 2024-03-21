@@ -64,6 +64,7 @@ export default function useAttachment() {
           ...oldPlayer,
           ...{
             duration,
+            progress: 0,
             durationFormated: formatTime(Math.round(duration), 'auto'),
             visualizedTime: 0,
             currentTime: formatTime(timeCurrent, 'auto'),
