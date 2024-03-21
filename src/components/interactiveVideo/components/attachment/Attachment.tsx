@@ -32,6 +32,7 @@ const Attachment = ({ src }: Props) => {
         <Component.Video
           ref={videoRef}
           controlsList="nodownload noremoteplayback"
+          onContextMenu={(e) => e.preventDefault()}
           onLoadedMetadata={onLoadedMetadata}
           onPlay={onPlay}
           onPause={onPause}
